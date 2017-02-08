@@ -1,0 +1,21 @@
+---
+- name: RancherServer
+  hosts: rancherserver
+  sudo: True
+  tasks:
+  - name: update_cache
+    yum: update_cache=yes name="*" state=present
+  - name: install-python
+    yum: name=python state=present
+  - name: install-python-pip
+    yum: name=python-pip state=present
+  - name: install-docker-py
+    pip: name=docker-py
+  - name: RancherOS rancher/server
+    docker:
+      name: rancherserver
+      image: rancher/server
+      state: reloaded
+      restart_policy: always
+      ports:
+      - "8080:8080"

@@ -1,0 +1,69 @@
+version: '2'
+services:
+  elasticsearch-datavolume-clients:
+    metadata:
+      elasticsearch: &id002
+        yml:
+          cluster.name: flowinsight
+          network.host: _site_
+          node.data: 'false'
+          node.master: 'false'
+          node.name: $${HOSTNAME}
+    scale: 1
+    start_on_create: true
+  elasticsearch-datanodes:
+    metadata:
+      elasticsearch: &id001
+        yml:
+          cluster.name: flowinsight
+          http.enabled: 'false'
+          network.host: _site_
+          node.data: 'true'
+          node.master: 'false'
+          node.name: $${HOSTNAME}
+    scale: 1
+    start_on_create: true
+  elasticsearch-base-datanode:
+    metadata:
+      elasticsearch: *id001
+    scale: 1
+    start_on_create: true
+  elasticsearch-datavolume-datanode:
+    metadata:
+      elasticsearch: *id001
+    scale: 1
+    start_on_create: true
+  elasticsearch-datavolume-masters:
+    metadata:
+      elasticsearch: &id003
+        yml:
+          cluster.name: flowinsight
+          network.host: _site_
+          node.data: 'false'
+          node.master: 'true'
+          node.name: $${HOSTNAME}
+    scale: 1
+    start_on_create: true
+  elasticsearch-clients:
+    metadata:
+      elasticsearch: *id002
+    scale: 1
+    start_on_create: true
+  kopf:
+    scale: 1
+    start_on_create: true
+  elasticsearch-masters:
+    metadata:
+      elasticsearch: *id003
+    scale: 1
+    start_on_create: true
+  elasticsearch-base-clients:
+    metadata:
+      elasticsearch: *id002
+    scale: 1
+    start_on_create: true
+  elasticsearch-base-master:
+    metadata:
+      elasticsearch: *id003
+    scale: 1
+    start_on_create: true

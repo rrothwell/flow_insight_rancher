@@ -1,0 +1,22 @@
+---
+- name: rancher-agent
+  hosts: es_slave_0s
+  vars:
+     url_contents: "{{ lookup('file', 'url') }}"
+     labels_contents: "{{ lookup('file', 'labels') }}"
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: rancher-agent
+    docker_container:
+      name: rancheragent
+      image: rancher/agent
+      privileged: yes
+      state: started
+      detach: yes
+      volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/rancher:/var/lib/rancher"
+      command: "{{ url_contents }}"
+      env:
+        CATTLE_HOST_LABELS: "{{ labels_contents }}"
