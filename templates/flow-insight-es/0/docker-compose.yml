@@ -40,6 +40,8 @@ elasticsearch-datanodes:
     - elasticsearch-masters:es-masters
   volumes_from:
     - elasticsearch-datavolume-datanode
+  environment:
+    ES_JAVA_OPTS: -Xms31g -Xmx31g
 elasticsearch-datavolume-datanode:
   labels:
     elasticsearch.datanode.config.version: '0'
