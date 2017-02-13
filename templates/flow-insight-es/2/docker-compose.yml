@@ -8,6 +8,8 @@ elasticsearch-masters:
     - elasticsearch-datavolume-masters
   ports:
     - "9200:9200"
+  expose:
+    - "9200"
   environment:
     ES_JAVA_OPTS: -Xms2g -Xmx2g
 elasticsearch-datavolume-masters:
@@ -46,6 +48,8 @@ elasticsearch-datanodes:
     - elasticsearch-datavolume-datanode
   ports:
     - "9200:9200"
+  expose:
+    - "9200"
   environment:
     ES_JAVA_OPTS: -Xms8g -Xmx8g
 elasticsearch-datavolume-datanode:
@@ -85,6 +89,8 @@ elasticsearch-clients:
     - elasticsearch-datavolume-clients
   ports:
     - "9200:9200"
+  expose:
+    - "9200"
   environment:
     ES_JAVA_OPTS: -Xms2g -Xmx2g
 elasticsearch-datavolume-clients:
