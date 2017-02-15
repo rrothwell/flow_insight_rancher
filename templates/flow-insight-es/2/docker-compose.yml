@@ -11,7 +11,7 @@ elasticsearch-masters:
   expose:
     - "9200"
   environment:
-    ES_JAVA_OPTS: -Xms2g -Xmx2g
+    ES_JAVA_OPTS: -Xms2g -Xmx2g 
 elasticsearch-datavolume-masters:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -51,7 +51,7 @@ elasticsearch-datanodes:
   expose:
     - "9200"
   environment:
-    ES_JAVA_OPTS: -Xms8g -Xmx8g
+    ES_JAVA_OPTS: -Xms31g -Xmx31g 
 elasticsearch-datavolume-datanode:
   labels:
     elasticsearch.datanode.config.version: '0'
