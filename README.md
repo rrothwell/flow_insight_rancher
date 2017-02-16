@@ -69,13 +69,13 @@ The properties defined there are inserted directly into the elasticsearch.yml fi
 
 The short term data nodes use container data directories that are mapped to host directories on SSD volumes. 
 The data directories as seen from the host need to have a uid/guid that looks like the elasticsearch user as seen from the container,
-otherwise ElasticSearch will thrown AccessDenied exceptions during startup and the data node container will file to start.
+otherwise ElasticSearch will thrown AccessDenied exceptions during startup and the data node container will fail to start.
 
-The elasticsearch uid/gui was found by starting up the base container via:
+The container elasticsearch user uid/gui was found by starting up the base container via:
 ``` bash
 docker run -it -v /disks/ssde/elasticsearch_data:/data0  elasticsearch:2.4.3-alpine /bin/bash
 ````
-And the running the id command
+And then running the id command
 ``` bash
 id elasticsearch
 ```
