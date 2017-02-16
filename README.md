@@ -20,13 +20,13 @@ There are 2 files provided in the template: rancher-compose.yml and docker-compo
 docker-compose.yml is used to define/modify the behavior of the Docker images.
 rancher-compose.yml is used to provide configuration that is inserted into elasticsearch.yml.
 
-## Memory Configuration
+### Memory Configuration
 
 The default Java JVM settings are not sufficient. 
 The allocation needs to be set to half the available RAM up to a maximum of 32 Gig.
 As the bare metal servers assigned the role of datanodes have 128Gig, the JVM is set to use 31Gig.
 
-## Data Node Storage Configuration
+### Data Node Storage Configuration
 
 Additional configuration is used to tell an ElasticSearch data node which actual volumes to used for data storage. 
 There are 2 kinds of storage provide on the bare metal servers, SSD and HD, with SSDs being assigned for use by short term indexes and HDs being assigned for use by long term indexes. 
@@ -37,13 +37,13 @@ For some datanodes SSDs are to be used and the volume names are as follows:
 
 These values need to be set in the file elasticsearch.yml where they can be used by ElasticSearch. 
 
+### Configuration File Modifications
+
 Modifications to docker-compose.yml are as follows:
 
 1. the Java JVM memory limits are increased in line with the available RAM on the bare metal and VM servers used in the cluster.
 1. host affinity is set so that Rancher deploys each service to the appropriate host to match the service's resource requirements.
 1. Data volumes are mapped from the host to the datanode container.
-
-## Configuration File Modifications
 
 Modifications to rancher-compose.yml are as follows:
 
