@@ -64,7 +64,6 @@ elasticsearch-datavolume-datanode:
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
-  user: "501"
 elasticsearch-base-datanode:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -77,6 +76,7 @@ elasticsearch-base-datanode:
   volumes_from:
     - elasticsearch-datavolume-datanode
   net: "container:elasticsearch-datanodes"
+  user: "501"
 
 
 elasticsearch-clients:
