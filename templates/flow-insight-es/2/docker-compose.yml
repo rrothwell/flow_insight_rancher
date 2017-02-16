@@ -58,7 +58,8 @@ elasticsearch-datavolume-datanode:
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
   volumes:
-    - /usr/share/elasticsearch/data
+    - /disks/ssdf:/data0
+    - /disks/ssde:/data1
     - /usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
