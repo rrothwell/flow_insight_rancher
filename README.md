@@ -43,7 +43,10 @@ Modifications to docker-compose.yml are as follows:
 1. host affinity is set so that Rancher deploys each service to the appropriate host to match the service's resource requirements.
 1. Data volumes are mapped from the host to the datanode container.
 
+## Configuration File Modifications
+
 Modifications to rancher-compose.yml are as follows:
+
 1. Data volumes are defined so that the default path is over-ridden by 2 data volume paths.
 
 ## ElasticSearch Rancher Docker Images
