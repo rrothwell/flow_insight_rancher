@@ -35,6 +35,17 @@ elasticsearch-datanodes:
         http.enabled: "false"
         network.host: "_site_"
         path.data: "/data0,/data1"
+elasticsearch-datanodes-longterm:
+  metadata:
+    elasticsearch:
+      yml:
+        cluster.name: "${cluster_name}"
+        node.name: "$${HOSTNAME}"
+        node.data: "true"
+        node.master: "false"
+        http.enabled: "false"
+        network.host: "_site_"
+        path.data: "/data0,/data1,/data2,/data3"
 elasticsearch-clients:
   metadata:
     elasticsearch:
