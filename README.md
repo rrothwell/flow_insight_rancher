@@ -7,6 +7,8 @@ A collection of resources used to deploy FlowInsight within the Rancher/Docker e
 1. Ansible playbooks:
   1. to install the Rancher management web application on a server.
   1. to install the Rancher Agent on a group of servers.
+1. Installation scripts.
+  1. Bash scripts that can be run across the cluster using Ansible.
 1. Modified Rancher templates to deploy:
   1. An ElasticSearch cluster
 1. Modified Dockerfiles to build images that Rancher uses to deploy:
@@ -60,3 +62,25 @@ as the configuration provided via the template's docker-compose.yml and rancher-
 
 Configuration in the file elasticsearch.yml is populated during Docker image startup from metadata stored in the rancher-compose.yml file under the yml block.
 The properties defined there are inserted directly into the elasticsearch.yml file.
+
+## Installation Scripts
+
+### Volume Mappings
+
+The short term data nodes use container data directories that are mapped to host directories on SSD volumes. 
+The data directories as seen from the host need to have a uid/guid that looks like the elasticsearch user as seen from the container,
+otherwise ElasticSearch will thrown AccessDenied exceptions during startup and the data node container will file to start.
+
+The elasticsearch uid/gui was found by starting up the base container via:
+``` bash
+docker run -it -v /disks/ssde/elasticsearch_data:/data0  elasticsearch:2.4.3-alpine /bin/bash
+````
+And the running the id command
+``` bash
+id elasticsearch
+```
+
+The script prepare_elasticsearch_storage.sh can then be run across the cluster like this:
+``` bash
+ansible baremetal -b -K -m script -a "/Users/developer/git/flow_insight_docker/centos/centos7/prototype/elasticsearch/prepare_elasticsearch_storage.sh "
+```
