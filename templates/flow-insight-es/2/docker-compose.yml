@@ -77,18 +77,18 @@ elasticsearch-datanodes-longterm:
   image: rancher/elasticsearch-conf:v0.5.0
   labels:
     io.rancher.container.hostname_override: container_name
-    io.rancher.sidekicks: elasticsearch-base-datanode,elasticsearch-datavolume-datanode
+    io.rancher.sidekicks: elasticsearch-base-datanode-longterm,elasticsearch-datavolume-datanode-longterm
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.scheduler.affinity:host_label: es_node=es_data
   links:
     - elasticsearch-masters:es-masters
   volumes_from:
-    - elasticsearch-datavolume-datanode
+    - elasticsearch-datavolume-datanode-longterm
   ports:
     - "9200:9200"
   environment:
     ES_JAVA_OPTS: -Xms31g -Xmx31g 
-elasticsearch-datavolume-datanode:
+elasticsearch-datavolume-datanode-longterm:
   labels:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
@@ -102,7 +102,7 @@ elasticsearch-datavolume-datanode:
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
-elasticsearch-base-datanode:
+elasticsearch-base-datanode-longterm:
   labels:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
