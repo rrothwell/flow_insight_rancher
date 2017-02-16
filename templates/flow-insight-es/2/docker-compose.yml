@@ -52,6 +52,7 @@ elasticsearch-datanodes:
     - "9200"
   environment:
     ES_JAVA_OPTS: -Xms31g -Xmx31g 
+  user: 501
 elasticsearch-datavolume-datanode:
   labels:
     elasticsearch.datanode.config.version: '0'
