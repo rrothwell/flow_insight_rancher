@@ -56,6 +56,7 @@ elasticsearch-datavolume-datanode:
   volumes:
     - /disks/ssde/elasticsearch_data:/data0
     - /disks/ssdf/elasticsearch_data:/data1
+    - /var/log/elasticsearch:/log
     - /usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
@@ -78,7 +79,7 @@ elasticsearch-datanodes-longterm:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode-longterm,elasticsearch-datavolume-datanode-longterm
-    io.rancher.scheduler.affinity:host_label: es_node=es_data
+    io.rancher.scheduler.affinity:host_label: es_node_2=es_data
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
   links:
     - elasticsearch-masters:es-masters
@@ -98,6 +99,7 @@ elasticsearch-datavolume-datanode-longterm:
     - /disks/sdc/elasticsearch_data:/data1
     - /disks/sdb10/elasticsearch_data:/data2
     - /disks/sda10/elasticsearch_data:/data3
+    - /var/log/elasticsearch_longterm:/log
     - /usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
