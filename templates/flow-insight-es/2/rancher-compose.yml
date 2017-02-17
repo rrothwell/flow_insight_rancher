@@ -33,8 +33,15 @@ elasticsearch-datanodes:
         node.data: "true"
         node.master: "false"
         http.enabled: "false"
+        #http.port: "9200"
+        #transport.tcp.port: "9200"
         network.host: "_site_"
         path.data: "/data0,/data1"
+        #path.log: "/log"
+        #path.work: "/work"
+        #path.plugins: "/plugins"
+        processors: 10
+        cluster.routing.allocation.same_shard.host: "true"
 elasticsearch-datanodes-longterm:
   metadata:
     elasticsearch:
@@ -44,8 +51,15 @@ elasticsearch-datanodes-longterm:
         node.data: "true"
         node.master: "false"
         http.enabled: "false"
+        #http.port: "9201"
+        #transport.tcp.port: "9201"
         network.host: "_site_"
         path.data: "/data0,/data1,/data2,/data3"
+        #path.log: "/log"
+        #path.work: "/work"
+        #path.plugins: "/plugins"
+        processors: 10
+        cluster.routing.allocation.same_shard.host: "true"
 elasticsearch-clients:
   metadata:
     elasticsearch:
