@@ -47,7 +47,7 @@ elasticsearch-datanodes-longterm:
     elasticsearch:
       yml:
         cluster.name: "${cluster_name}"
-        node.name: "$${HOSTNAME}"
+        node.name: "$${HOSTNAME}.longterm"
         node.data: "true"
         node.master: "false"
         http.enabled: "false"
