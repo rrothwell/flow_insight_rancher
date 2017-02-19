@@ -44,8 +44,6 @@ elasticsearch-datanodes:
     - elasticsearch-masters:es-masters
   volumes_from:
     - elasticsearch-datavolume-datanode
-  ports:
-    - "9200:9200"
   environment:
     ES_JAVA_OPTS: -Xms31g -Xmx31g 
 elasticsearch-datavolume-datanode:
@@ -85,8 +83,6 @@ elasticsearch-datanodes-longterm:
     - elasticsearch-masters:es-masters
   volumes_from:
     - elasticsearch-datavolume-datanode-longterm
-  ports:
-    - "9200:9200"
   environment:
     ES_JAVA_OPTS: -Xms31g -Xmx31g 
 elasticsearch-datavolume-datanode-longterm:
