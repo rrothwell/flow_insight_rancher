@@ -13,7 +13,7 @@
       label: "Public Port"
       description: "Unique public port for kopf"
       type: "int"
-      default: 80
+      default: 81
       required: true
 elasticsearch-masters:
   metadata:

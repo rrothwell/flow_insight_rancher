@@ -77,7 +77,7 @@ elasticsearch-datanodes-longterm:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode-longterm,elasticsearch-datavolume-datanode-longterm
-    io.rancher.scheduler.affinity:host_label: es_node_2=es_data
+    io.rancher.scheduler.affinity:host_label: es_node=es_data
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
   links:
     - elasticsearch-masters:es-masters
@@ -160,5 +160,7 @@ kopf:
     KOPF_ES_SERVERS: 'es-clients:9200'
   labels:
     io.rancher.container.hostname_override: container_name
+    io.rancher.scheduler.affinity:host_label: es_node=es_management
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
   links:
     - elasticsearch-clients:es-clients
