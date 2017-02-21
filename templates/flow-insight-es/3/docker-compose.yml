@@ -56,6 +56,7 @@ elasticsearch-datavolume-datanode:
     - /disks/ssdf/elasticsearch_data:/data1
     - /var/log/elasticsearch:/log
     - /usr/share/elasticsearch/config
+    - /elasticsearch:/elasticsearch
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
@@ -97,6 +98,7 @@ elasticsearch-datavolume-datanode-longterm:
     - /disks/sda10/elasticsearch_data:/data3
     - /var/log/elasticsearch_longterm:/log
     - /usr/share/elasticsearch/config
+    - /elasticsearch:/elasticsearch
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
