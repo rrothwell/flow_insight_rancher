@@ -17,7 +17,7 @@ elasticsearch-datavolume-masters:
     io.rancher.container.start_once: true
   volumes:
     - /usr/share/elasticsearch/data
-    - /usr/share/elasticsearch/config
+    - /elasticsearch/config:/usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
@@ -55,8 +55,7 @@ elasticsearch-datavolume-datanode:
     - /disks/ssde/elasticsearch_data:/data0
     - /disks/ssdf/elasticsearch_data:/data1
     - /var/log/elasticsearch:/log
-    - /usr/share/elasticsearch/config
-    - /elasticsearch:/elasticsearch
+    - /elasticsearch/config:/usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
@@ -97,8 +96,7 @@ elasticsearch-datavolume-datanode-longterm:
     - /disks/sdb10/elasticsearch_data:/data2
     - /disks/sda10/elasticsearch_data:/data3
     - /var/log/elasticsearch_longterm:/log
-    - /usr/share/elasticsearch/config
-    - /elasticsearch:/elasticsearch
+    - /elasticsearch/config:/usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
@@ -137,7 +135,7 @@ elasticsearch-datavolume-clients:
     io.rancher.container.start_once: true
   volumes:
     - /usr/share/elasticsearch/data
-    - /usr/share/elasticsearch/config
+    - /elasticsearch/config:/usr/share/elasticsearch/config
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
