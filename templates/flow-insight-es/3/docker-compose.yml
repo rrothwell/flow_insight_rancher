@@ -8,8 +8,6 @@ elasticsearch-masters:
     - elasticsearch-datavolume-masters
   ports:
     - "9200:9200"
-  environment:
-    ES_JAVA_OPTS: "-Xms2g -Xmx2g" 
 elasticsearch-datavolume-masters:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -30,9 +28,10 @@ elasticsearch-base-master:
   net: "container:elasticsearch-masters"
   volumes_from:
     - elasticsearch-datavolume-masters
+  environment:
+    ES_HEAP_SIZE: "2g" 
   entrypoint:
     - /opt/rancher/bin/run.sh
-
 
 elasticsearch-datanodes:
   image: rancher/elasticsearch-conf:v0.5.0
@@ -45,8 +44,6 @@ elasticsearch-datanodes:
     - elasticsearch-masters:es-masters
   volumes_from:
     - elasticsearch-datavolume-datanode
-  environment:
-    ES_JAVA_OPTS: "-Xms31g -Xmx31g" 
 elasticsearch-datavolume-datanode:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -72,6 +69,8 @@ elasticsearch-base-datanode:
   volumes_from:
     - elasticsearch-datavolume-datanode
   net: "container:elasticsearch-datanodes"
+  environment:
+    ES_HEAP_SIZE: "31g" 
 
 elasticsearch-datanodes-longterm:
   image: rancher/elasticsearch-conf:v0.5.0
@@ -84,8 +83,6 @@ elasticsearch-datanodes-longterm:
     - elasticsearch-masters:es-masters
   volumes_from:
     - elasticsearch-datavolume-datanode-longterm
-  environment:
-    ES_JAVA_OPTS: "-Xms31g -Xmx31g"
 elasticsearch-datavolume-datanode-longterm:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -113,6 +110,8 @@ elasticsearch-base-datanode-longterm:
   volumes_from:
     - elasticsearch-datavolume-datanode-longterm
   net: "container:elasticsearch-datanodes-longterm"
+  environment:
+    ES_HEAP_SIZE: "31g" 
 
 
 elasticsearch-clients:
@@ -127,8 +126,6 @@ elasticsearch-clients:
     - elasticsearch-datavolume-clients
   ports:
     - "9200:9200"
-  environment:
-    ES_JAVA_OPTS: "-Xms2g -Xmx2g"
 elasticsearch-datavolume-clients:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -149,6 +146,8 @@ elasticsearch-base-clients:
   volumes_from:
     - elasticsearch-datavolume-clients
   net: "container:elasticsearch-clients"
+  environment:
+    ES_HEAP_SIZE: "2g" 
   entrypoint:
     - /opt/rancher/bin/run.sh
 
