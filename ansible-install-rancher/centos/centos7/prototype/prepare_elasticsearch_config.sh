@@ -14,6 +14,8 @@ sudo mkdir -p /elasticsearch/config_longterm
 sudo chown 100:101 /elasticsearch/config
 sudo chown 100:101 /elasticsearch/config_longterm
 
+rm -f /elasticsearch/config_longterm/logging.flowinsight_longterm.yml
+
 # May need to delete these 2 config files if not up-to-date with rancher-compose.yml
 #rm -f /elasticsearch/config/elasticsearch.yml 
 #rm -f /elasticsearch/config/logging.yml 
@@ -54,9 +56,9 @@ logger:
 appender:
     file:
         type: org.apache.log4j.rolling.RollingFileAppender
-        file: \${path.logs}/\${cluster.name}.log
+        file: \${path.logs}/\${cluster.name}.longterm.log
         rollingPolicy: org.apache.log4j.rolling.TimeBasedRollingPolicy
-        rollingPolicy.FileNamePattern: \${path.logs}/\${cluster.name}.log.%d{yyyy-MM-dd}.gz
+        rollingPolicy.FileNamePattern: \${path.logs}/\${cluster.name}.longterm.log.%d{yyyy-MM-dd}.gz
         layout:
           type: pattern
           conversionPattern: "%d{ISO8601}[%-5p][%-25c] %m%n"
