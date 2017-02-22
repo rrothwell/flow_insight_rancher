@@ -10,15 +10,16 @@
 
 
 sudo mkdir -p /elasticsearch/config
-sudo mkdir -p /elasticsearch/config_longterm
+sudo mkdir -p /elasticsearch/config_lt
 sudo chown 100:101 /elasticsearch/config
-sudo chown 100:101 /elasticsearch/config_longterm
-
-rm -f /elasticsearch/config_longterm/logging.flowinsight_longterm.yml
+sudo chown 100:101 /elasticsearch/config_lt
 
 # May need to delete these 2 config files if not up-to-date with rancher-compose.yml
 #rm -f /elasticsearch/config/elasticsearch.yml 
 #rm -f /elasticsearch/config/logging.yml 
+
+rm -Rf /elasticsearch/config_longterm
+rm -Rf /var/log/elasticsearch_longterm
 
 cat << EOF > /elasticsearch/config/logging.flowinsight.yml
 
@@ -43,7 +44,7 @@ EOF
 
 # TODO RR Move this stuff to a storybook so only datanodes pick up this config.
 
-cat << EOF > /elasticsearch/config_longterm/logging.flowinsight.yml
+cat << EOF > /elasticsearch/config_lt/logging.flowinsight.yml
 
 # you can override this using by setting a system property, for example -Des.logger.level=DEBUG
 es.logger.level: INFO
@@ -56,9 +57,9 @@ logger:
 appender:
     file:
         type: org.apache.log4j.rolling.RollingFileAppender
-        file: \${path.logs}/\${cluster.name}.longterm.log
+        file: \${path.logs}/\${cluster.name}.lt.log
         rollingPolicy: org.apache.log4j.rolling.TimeBasedRollingPolicy
-        rollingPolicy.FileNamePattern: \${path.logs}/\${cluster.name}.longterm.log.%d{yyyy-MM-dd}.gz
+        rollingPolicy.FileNamePattern: \${path.logs}/\${cluster.name}.log.%d{yyyy-MM-dd}.gz
         layout:
           type: pattern
           conversionPattern: "%d{ISO8601}[%-5p][%-25c] %m%n"
@@ -72,5 +73,5 @@ sudo chown 100:101 /var/log/elasticsearch
 
 # ElasticSearch long term datanode logging
 
-sudo mkdir -p /var/log/elasticsearch_longterm
-sudo chown 100:101 /var/log/elasticsearch_longterm
+sudo mkdir -p /var/log/elasticsearch_lt
+sudo chown 100:101 /var/log/elasticsearch_lt

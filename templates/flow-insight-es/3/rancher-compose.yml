@@ -24,6 +24,7 @@ elasticsearch-masters:
         node.data: "false"
         node.master: "true"
         network.host: "_site_"
+# Short term data nodes on SSD storage
 elasticsearch-datanodes:
   metadata:
     elasticsearch:
@@ -39,12 +40,13 @@ elasticsearch-datanodes:
         #path.plugins: "/plugins"
         processors: 10
         cluster.routing.allocation.same_shard.host: "true"
-elasticsearch-datanodes-longterm:
+# Long term (lt) data nodes on HD storage
+elasticsearch-datanodes-lt:
   metadata:
     elasticsearch:
       yml:
         cluster.name: "${cluster_name}"
-        node.name: "$${HOSTNAME}.longterm"
+        node.name: "$${HOSTNAME}.lt"
         node.data: "true"
         node.master: "false"
         http.enabled: "false"
