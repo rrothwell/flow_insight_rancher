@@ -52,7 +52,6 @@ elasticsearch-datanodes-lt:
         http.enabled: "false"
         network.host: "_site_"
         path.data: "/data0,/data1,/data2,/data3"
-        path.logs: "$${path.home}/logs"
         #path.work: "/work"
         #path.plugins: "/plugins"
         processors: 10
