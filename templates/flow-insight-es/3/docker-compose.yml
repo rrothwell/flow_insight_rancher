@@ -18,6 +18,7 @@ elasticsearch-datavolume-masters:
   volumes:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /var/log/elasticsearch:/usr/share/elasticsearch/logs
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
@@ -54,8 +55,8 @@ elasticsearch-datavolume-datanode:
   volumes:
     - /disks/ssde/elasticsearch_data:/data0
     - /disks/ssdf/elasticsearch_data:/data1
-    - /var/log/elasticsearch:/log
     - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /var/log/elasticsearch:/usr/share/elasticsearch/logs
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
@@ -95,8 +96,8 @@ elasticsearch-datavolume-datanode-longterm:
     - /disks/sdc/elasticsearch_data:/data1
     - /disks/sdb10/elasticsearch_data:/data2
     - /disks/sda10/elasticsearch_data:/data3
-    - /var/log/elasticsearch_longterm:/log
     - /elasticsearch/config_longterm:/usr/share/elasticsearch/config
+    - /var/log/elasticsearch_longterm:/usr/share/elasticsearch/logs
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine
@@ -136,6 +137,7 @@ elasticsearch-datavolume-clients:
   volumes:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /var/log/elasticsearch:/usr/share/elasticsearch/logs
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: elasticsearch:2.4.3-alpine

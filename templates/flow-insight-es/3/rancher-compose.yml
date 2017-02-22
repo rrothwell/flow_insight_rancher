@@ -35,7 +35,6 @@ elasticsearch-datanodes:
         http.enabled: "false"
         network.host: "_site_"
         path.data: "/data0,/data1"
-        path.log: "/log"
         #path.work: "/work"
         #path.plugins: "/plugins"
         processors: 10
@@ -51,7 +50,6 @@ elasticsearch-datanodes-longterm:
         http.enabled: "false"
         network.host: "_site_"
         path.data: "/data0,/data1,/data2,/data3"
-        path.log: "/log"
         #path.work: "/work"
         #path.plugins: "/plugins"
         processors: 10
