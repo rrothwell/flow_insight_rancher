@@ -7,10 +7,16 @@
 # ElasticSearch will merge this configuration file with the one provided by the container
 # at /usr/share/elasticsearch/config/logging.yml
 
+
+
 sudo mkdir -p /elasticsearch/config
 sudo mkdir -p /elasticsearch/config_longterm
 sudo chown 100:101 /elasticsearch/config
 sudo chown 100:101 /elasticsearch/config_longterm
+
+# May need to delete these 2 config files if not up-to-date with rancher-compose.yml
+#rm -f /elasticsearch/config/elasticsearch.yml 
+#rm -f /elasticsearch/config/logging.yml 
 
 cat << EOF > /elasticsearch/config/logging.flowinsight.yml
 
