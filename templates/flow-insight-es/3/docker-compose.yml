@@ -9,7 +9,7 @@ elasticsearch-masters:
   ports:
     - "9200:9200"
   environment:
-    ES_JAVA_OPTS: -Xms2g -Xmx2g 
+    ES_JAVA_OPTS: "-Xms2g -Xmx2g" 
 elasticsearch-datavolume-masters:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -46,7 +46,7 @@ elasticsearch-datanodes:
   volumes_from:
     - elasticsearch-datavolume-datanode
   environment:
-    ES_JAVA_OPTS: -Xms31g -Xmx31g 
+    ES_JAVA_OPTS: "-Xms31g -Xmx31g" 
 elasticsearch-datavolume-datanode:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -85,7 +85,7 @@ elasticsearch-datanodes-longterm:
   volumes_from:
     - elasticsearch-datavolume-datanode-longterm
   environment:
-    ES_JAVA_OPTS: -Xms31g -Xmx31g 
+    ES_JAVA_OPTS: "-Xms31g -Xmx31g"
 elasticsearch-datavolume-datanode-longterm:
   labels:
     elasticsearch.datanode.config.version: '0'
@@ -128,7 +128,7 @@ elasticsearch-clients:
   ports:
     - "9200:9200"
   environment:
-    ES_JAVA_OPTS: -Xms2g -Xmx2g
+    ES_JAVA_OPTS: "-Xms2g -Xmx2g"
 elasticsearch-datavolume-clients:
   labels:
     elasticsearch.datanode.config.version: '0'
