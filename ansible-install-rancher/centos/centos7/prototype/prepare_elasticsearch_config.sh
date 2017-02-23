@@ -18,9 +18,6 @@ sudo chown 100:101 /elasticsearch/config_lt
 #rm -f /elasticsearch/config/elasticsearch.yml 
 #rm -f /elasticsearch/config/logging.yml 
 
-rm -Rf /elasticsearch/config_longterm
-rm -Rf /var/log/elasticsearch_longterm
-
 cat << EOF > /elasticsearch/config/logging.flowinsight.yml
 
 # you can override this using by setting a system property, for example -Des.logger.level=DEBUG
@@ -59,7 +56,7 @@ appender:
         type: org.apache.log4j.rolling.RollingFileAppender
         file: \${path.logs}/\${cluster.name}.lt.log
         rollingPolicy: org.apache.log4j.rolling.TimeBasedRollingPolicy
-        rollingPolicy.FileNamePattern: \${path.logs}/\${cluster.name}.log.%d{yyyy-MM-dd}.gz
+        rollingPolicy.FileNamePattern: \${path.logs}/\${cluster.name}.lt.log.%d{yyyy-MM-dd}.gz
         layout:
           type: pattern
           conversionPattern: "%d{ISO8601}[%-5p][%-25c] %m%n"
