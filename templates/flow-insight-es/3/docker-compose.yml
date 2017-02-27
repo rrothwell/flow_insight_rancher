@@ -118,7 +118,7 @@ elasticsearch-query-clients:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-query-clients,elasticsearch-datavolume-query-clients
-    io.rancher.scheduler.affinity:host_label: es_node=es_client
+    io.rancher.scheduler.affinity:host_label: es_node=es_query_client
   links:
     - elasticsearch-masters:es-masters
   volumes_from:
@@ -154,7 +154,7 @@ elasticsearch-index-clients:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-index-clients,elasticsearch-datavolume-index-clients
-    io.rancher.scheduler.affinity:host_label: es_node=es_client
+    io.rancher.scheduler.affinity:host_label: es_node=es_index_client
   links:
     - elasticsearch-masters:es-masters
   volumes_from:
