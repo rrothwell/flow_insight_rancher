@@ -7,11 +7,13 @@ kibana-vip:
   links:
   - nginx-proxy:kibana4
   stdin_open: true
+  
 nginx-proxy-conf:
   image: rancher/nginx-conf:v0.2.0
   command: "-backend=rancher --prefix=/2015-07-25"
   labels:
     io.rancher.container.hostname_override: container_name
+    
 nginx-proxy:
   image: rancher/nginx:v1.9.4-3
   volumes_from:
@@ -19,8 +21,11 @@ nginx-proxy:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: nginx-proxy-conf,kibana4
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: es_node=es_management
   external_links:
     - ${elasticsearch_source}:elasticsearch
+    
 kibana4:
   restart: always
   tty: true
