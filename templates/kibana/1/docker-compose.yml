@@ -7,6 +7,9 @@ kibana-vip:
   links:
   - nginx-proxy:kibana4
   stdin_open: true
+  labels:
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: es_management=kibana
   
 nginx-proxy-conf:
   image: rancher/nginx-conf:v0.2.0
