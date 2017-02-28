@@ -11,9 +11,9 @@ flowinsight-farm:
   entrypoint:
     - /usr/local/bin/farm_entrypoint.sh
   command:
-    - /srv/insight/init_data
-    - +blerp26
-    - %gickle
+    - "/srv/insight/init_data"
+    - "+blerp26"
+    - "%gickle"
    
     
 #flowinsight-farm:
