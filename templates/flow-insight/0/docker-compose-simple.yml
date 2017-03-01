@@ -1,0 +1,56 @@
+#flowinsight-farm:
+#  image: registry.aarnet.net.au/insight/farm 
+#  labels:
+#    io.rancher.container.hostname_override: container_name
+#    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+#    io.rancher.scheduler.affinity:host_label: flowinsight_role=pipeline
+#  ports:
+#    - "9797:22"  
+#  volumes:
+#    - "/home/rgr/init_data:/srv/insight/init_data"
+#  entrypoint:
+#    - /usr/local/bin/farm_entrypoint.sh
+#  command:
+#    - "/srv/insight/init_data"
+#    - "+blerp26"
+#    - "%gickle"
+   
+    
+flowinsight-farm:
+  image: registry.aarnet.net.au/insight/farm-conf:v0.1.0
+ labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: flowinsight_role=pipeline
+#  links:
+#   - flowinsight-inlet:nprobe
+  volumes_from:
+   - flowinsight-farm-datavolume
+  ports:
+    - "9797:22"  
+#  environment:
+#   KEY: VALUE
+    
+flowinsight-farm-datavolume:
+  image: registry.aarnet.net.au/insight/farm 
+  labels:
+    flowinsight.farm.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - "/home/rgr/init_data:/srv/insight/init_data"
+  entrypoint: /bin/true
+  
+flowinsight-farm-base:
+  image: registry.aarnet.net.au/insight/farm 
+  labels:
+    flowinsight.farm.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+#  links:
+#   - flowinsight-inlet:nprobe
+  entrypoint:
+   - /opt/rancher/bin/run.sh
+  volumes_from:
+   - flowinsight-farm-datavolume
+  net: "container:flowinsight"
+

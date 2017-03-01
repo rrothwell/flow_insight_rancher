@@ -1,4 +1,53 @@
 #datanodei Placed by confd. Do not hand edit.
-{{range ls "/self/service/metadata/flowinsight/yml"}}
-{{.}}: {{getv (printf "/self/service/metadata/flowinsight/yml/%s" .)}}{{end}}
-{{end}}
+#{{range ls "/self/service/metadata/flowinsight/yml"}}
+#{{.}}: {{getv (printf "/self/service/metadata/flowinsight/yml/%s" .)}}{{end}}
+#{{end}}
+
+#!/usr/bin/env bash
+
+STARTUP_PATH=/usr/local/bin/lifecycle
+FARM_PATH=/srv/insight/farm
+
+PASSWORD_FILE="$FARM_PATH/passwords/local_password.pl"
+
+while [[ ! -e "$PASSWORD_FILE" ]] ; do
+    echo "Waiting for populated database. "
+	sleep 10
+done
+
+# Farm collectors
+
+#  $STARTUP_PATH/magpie.sh start sa-adel-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start sa-prka-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start wa-knsg-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start wa-eper-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start act-actn-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start act-dksn-pe1 ipv4   &>>/tmp/magpie.start.out &
+  $STARTUP_PATH/magpie.sh start vic-nbpk-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start vic-crlt-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start vic-wmlb-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start tas-hbrt-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start tas-hbrt-pe2 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start akl-wnpa-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start akl-tkpa-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start pretend-router ipv4   &>>/tmp/magpie.start.out &
+
+
+# Farm processors
+
+  cd $FARM_PATH/elephant
+  $STARTUP_PATH/elephant.sh start vic-nbpk-pe1 0 &>>/tmp/elephant.start.out &
+#  $STARTUP_PATH/elephant.sh start vic-nbpk-pe1 1 &>>/tmp/elephant.start.out &
+  cd $FARM_PATH/mouse
+  $STARTUP_PATH/mouse.sh start  &>>/tmp/mouse.start.out &
+  cd $FARM_PATH/rabbit
+  $STARTUP_PATH/rabbit.sh start  &>>/tmp/rabbit.start.out &
+#  $STARTUP_PATH/guarddog.sh start &>>/tmp/guarddog.start.out &
+#  $STARTUP_PATH/sheepdog.sh start &>>/tmp/sheepdog.start.out &
+  cd $FARM_PATH/fish
+  $STARTUP_PATH/fish.sh start  &>>/tmp/fish.start.out &
+  cd $FARM_PATH/rooster
+  $STARTUP_PATH/rooster.sh start  &>>/tmp/rooster.start.out &
+
+exit 0
+
