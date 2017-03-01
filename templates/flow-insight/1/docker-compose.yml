@@ -1,5 +1,5 @@
 flowinsight-farm:
-    image: registry.aarnet.net.au/insight/farm-conf:v0.3.4
+    image: registry.aarnet.net.au/insight/farm-conf:v0.3.5
     labels:
         io.rancher.container.hostname_override: container_name
         io.rancher.sidekicks: flowinsight-farm-base,flowinsight-farm-datavolume
@@ -22,6 +22,7 @@ flowinsight-farm-datavolume:
     volumes:
         - "/home/rgr/init_data:/srv/insight/init_data"
         - "/usr/local/bin"
+        - "/usr/share/flowinsight/config"
     entrypoint: /bin/true    
 flowinsight-farm-base:
     image: registry.aarnet.net.au/insight/farm 

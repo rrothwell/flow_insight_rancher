@@ -9,7 +9,6 @@ ADD ./run.sh /run.sh
 ADD ./dockerentry.sh /dockerentry.sh
 
 VOLUME /data/confd
-VOLUME /usr/share/flowinsight/config
 
 ENTRYPOINT ["/dockerentry.sh"]
 CMD ["--backend", "rancher", "--prefix", "/2015-07-25"]
