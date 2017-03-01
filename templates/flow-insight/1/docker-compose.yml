@@ -21,7 +21,6 @@ flowinsight-farm-datavolume:
         io.rancher.container.start_once: true
     volumes:
         - "/home/rgr/init_data:/srv/insight/init_data"
-        - "/opt/rancher/bin"
     entrypoint: /bin/true    
 flowinsight-farm-base:
     image: registry.aarnet.net.au/insight/farm 
@@ -32,7 +31,7 @@ flowinsight-farm-base:
 #     - flowinsight-inlet:nprobe
     entrypoint:
      #- bash -c "while [ ! -f /opt/rancher/bin/run.sh ] > /dev/null; do echo Waiting for run.sh; sleep 1; done; /opt/rancher/bin/run.sh"   
-     - bash -c "ls /opt/rancher/bin/"   
+     - bash -c "ls /opt"   
     volumes_from:
      - flowinsight-farm-datavolume
     net: "container:flowinsight-farm"
