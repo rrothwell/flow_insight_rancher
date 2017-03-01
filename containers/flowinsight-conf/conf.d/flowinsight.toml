@@ -1,6 +1,6 @@
 [template]
 src = "flowinsight.tmpl"
-dest = "/usr/local/bin/flowinsight/start_farm.sh"
+dest = "/usr/local/bin/lifecycle/start_farm.sh"
 keys = [
   "/self/service",
   "/containers",
