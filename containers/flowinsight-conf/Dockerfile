@@ -9,7 +9,7 @@ ADD ./run.sh /run.sh
 ADD ./dockerentry.sh /dockerentry.sh
 
 VOLUME /data/confd
-VOLUME /opt/rancher/bin
+VOLUME /usr/local/bin
 VOLUME /usr/share/flowinsight/config
 
 ENTRYPOINT ["/dockerentry.sh"]

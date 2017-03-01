@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cp /run.sh /opt/rancher/bin/
+cp /run.sh /usr/local/bin/
 
 exec /confd $@
