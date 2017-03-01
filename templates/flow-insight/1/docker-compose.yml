@@ -31,7 +31,7 @@ flowinsight-farm-base:
 #     - flowinsight-inlet:nprobe
     entrypoint:
      #- bash -c "while [ ! -f /opt/rancher/bin/run.sh ] > /dev/null; do echo Waiting for run.sh; sleep 1; done; /opt/rancher/bin/run.sh"   
-     - /bin/bash -v   
+     - /bin/bash
     volumes_from:
      - flowinsight-farm-datavolume
     net: "container:flowinsight-farm"
