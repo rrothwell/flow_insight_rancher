@@ -1,0 +1,4 @@
+#datanodei Placed by confd. Do not hand edit.
+{{range ls "/self/service/metadata/flowinsight/yml"}}
+{{.}}: {{getv (printf "/self/service/metadata/flowinsight/yml/%s" .)}}{{end}}
+{{end}}

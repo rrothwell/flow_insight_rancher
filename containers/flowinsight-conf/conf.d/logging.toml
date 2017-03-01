@@ -1,0 +1,6 @@
+[template]
+src = "logging.tmpl"
+dest = "/usr/share/flowinsight/config/logging.yml"
+keys = [
+  "/flowinsight/log/",
+]
