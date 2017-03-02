@@ -15,9 +15,16 @@
       type: "int"
       default: 1
       required: true
+    - variable: "ip_version"
+      label: "IP version"
+      description: "Internet protocol version (ipv4 or ipv6)."
+      type: "string"
+      default: "ipv4"
+      required: true
 flowinsight-farm:
   metadata:
     farm:
       yml:
         router_name: "${router_name}"
         router_scale: "${router_scale}"
+        ip_version: "${ip_version}"
