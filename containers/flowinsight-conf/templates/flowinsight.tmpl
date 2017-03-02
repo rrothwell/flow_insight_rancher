@@ -2,10 +2,7 @@
 
 # Placed by confd. Do not hand edit.
 
-{{range ls "/self/service/metadata/flowinsight-farm/yml"}}
-
 # FlowInsight data processing pipeline (called farm). 
-
 
 STARTUP_PATH=/usr/local/bin/lifecycle
 FARM_PATH=/srv/insight/farm
@@ -80,5 +77,3 @@ done
   $STARTUP_PATH/rooster.sh start  &>>/tmp/rooster.start.out &
 
 exit 0
-
-{{end}}

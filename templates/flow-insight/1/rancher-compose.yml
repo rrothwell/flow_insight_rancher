@@ -18,7 +18,10 @@
     - variable: "ip_version"
       label: "IP version"
       description: "Internet protocol version (ipv4 or ipv6)."
-      type: "string"
+      type: "enum"
+      options:
+          - "ipv4"
+          - "ipv6"
       default: "ipv4"
       required: true
 flowinsight-farm:
