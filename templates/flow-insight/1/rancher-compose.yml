@@ -6,13 +6,34 @@
     - variable: "router_name"
       label: "Router name"
       description: "Name of the router from which will process the IPFIX stream."
-      type: "string"
+      type: "enum"
+      options:
+          - "sa-adel-pe1"
+          - "sa-prka-pe1"
+          - "wa-knsg-pe1"
+          - "wa-eper-pe1"
+          - "act-actn-pe1"
+          - "act-dksn-pe1"
+          - "vic-nbpk-pe1"
+          - "vic-crlt-pe1"
+          - "vic-wmlb-pe1"
+          - "tas-hbrt-pe1"
+          - "tas-hbrt-pe2"
+          - "akl-wnpa-pe1"
+          - "akl-tkpa-pe1"
+          - "pretend-router"
       default: vic-nbpk-pe1
       required: true
     - variable: "router_scale"
       label: "Scale"
       description: "Number of processing instances to use for this router."
-      type: "int"
+      type: "enum"
+      options:
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+          - "5"
       default: 1
       required: true
     - variable: "ip_version"

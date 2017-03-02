@@ -20,16 +20,16 @@ ROUTER_NAME='vic-nbpk-pe1'
 IP_VERSION='ipv4'
 ROUTER_SCALE=1
 
-{{ if exists "/self/service/metadata/elasticsearch/yml/router_name" }}
-ROUTER_NAME='{{ getv "/self/service/metadata/elasticsearch/yml/router_name" }}'
+{{ if exists "/self/service/metadata/farm/yml/router_name" }}
+ROUTER_NAME='{{ getv "/self/service/metadata/farm/yml/router_name" }}'
 {{ end }}
 
-{{ if exists "/self/service/metadata/elasticsearch/yml/ip_version" }}
-IP_VERSION='{{ getv "/self/service/metadata/elasticsearch/yml/ip_version" }}'
+{{ if exists "/self/service/metadata/farm/yml/ip_version" }}
+IP_VERSION='{{ getv "/self/service/metadata/farm/yml/ip_version" }}'
 {{ end }}
 
-{{ if exists "/self/service/metadata/elasticsearch/yml/router_scale" }}
-ROUTER_SCALE='{{ getv "/self/service/metadata/elasticsearch/yml/router_scale" }}'
+{{ if exists "/self/service/metadata/farm/yml/router_scale" }}
+ROUTER_SCALE='{{ getv "/self/service/metadata/farm/yml/router_scale" }}'
 {{ end }}
 
 $STARTUP_PATH/magpie.sh start $ROUTER_NAME $IP_VERSION   &>>/tmp/magpie.start.out &
