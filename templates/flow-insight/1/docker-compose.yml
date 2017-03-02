@@ -9,8 +9,8 @@ flowinsight-farm:
 #     - flowinsight-inlet:nprobe
     volumes_from:
      - flowinsight-farm-datavolume
-    ports:
-        - "9797:22"    
+#    ports:
+#        - "9797:22"    
 #    environment:
 #     KEY: VALUE       
 flowinsight-farm-datavolume:
