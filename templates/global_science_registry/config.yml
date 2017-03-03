@@ -1,0 +1,10 @@
+name: Global Science Registry
+description: |
+    A MariaDB Galera Cluster for storing research community IP address assignments.
+    Customised with host affinity and initial database population from the GLORIAD Project.
+    (Experimental) Synchronous multi-master cluster for MariaDB
+version: 10.0.22-rancher1
+category: FlowInsight
+maintainer: Richard Rothwell <richard.rothwell@aarnet.edu.au>
+license: Apache2
+projectURL: https://git.cdn.aarnet.edu.au/aarnet_network_analytics/flow_insight_rancher
