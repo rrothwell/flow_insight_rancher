@@ -1,7 +1,6 @@
 ---
 name: FlowInsightES
-description: >
-  A searchable datastore for FllowInsight. This is an ElasticSearch stack setup with host affinity for client, master and datanodes.
+description: "A searchable datastore for FlowInsight. This is an ElasticSearch stack setup with host affinity for client, master and datanodes. "
 version: 0.0.1-rancher1
 category: FlowInsight
 maintainer: Richard Rothwell <richard.rothwell@aarnet.edu.au>
