@@ -8,7 +8,7 @@
       label: "Cluster Name"
       type: "string"
       required: true
-      default: "es"
+      default: "flowinsight"
     - variable: "kopf_port"
       label: "Public Port"
       description: "Unique public port for kopf"
