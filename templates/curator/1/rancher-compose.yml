@@ -1,7 +1,7 @@
 .catalog:
-  name: "FlowInsight: Curator"
+  name: "FlowInsightC"
   version: "4.6.3-rancher1"
-  description: "Manage the ElasticSearch indices for FlowInsight. On a schedule; transition from "hot" to "warm", snapshot, delete,  etc.."
+  description: "Manage the ElasticSearch indices for FlowInsight. On a schedule; transition from <<hot>> to <<warm>>, snapshot, delete,  etc.."
   questions:
     - variable: "elasticsearch_source"
       description: "Link to elasticsearch service or stack/service"
