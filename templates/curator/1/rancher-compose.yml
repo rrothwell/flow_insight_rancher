@@ -1,0 +1,49 @@
+.catalog:
+  name: "FlowInsight: Curator"
+  version: "4.6.3-rancher1"
+  description: "Manage the ElasticSearch indices for FlowInsight. On a schedule; transition from "hot" to "warm", snapshot, delete,  etc.."
+  questions:
+    - variable: "elasticsearch_source"
+      description: "Link to elasticsearch service or stack/service"
+      label: "Elasticsearch source"
+      type: "service"
+      required: true
+      default: "flow-insight-es/elasticsearch-query-clients"
+    - variable: "scheduled_hour"
+      label: "When/hour"
+      description: "Scheduled hour for processing (24h clock local time)."
+      type: "enum"
+      options:
+          - "00"
+          - "01"
+          - "02"
+          - "03"
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+          - "09"
+          - "10"
+          - "11"
+          - "12"
+          - "13"
+          - "14"
+          - "15"
+          - "16"
+          - "17"
+          - "18"
+          - "19"
+          - "20"
+          - "21"
+          - "22"
+          - "23"
+      default: "01"
+      required: true
+
+curator:
+  metadata:
+    curator:
+      yml:
+        elasticsearch_source: "${elasticsearch_source}"
+        scheduled_hour: "${scheduled_hour}"

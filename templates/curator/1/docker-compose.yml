@@ -1,0 +1,22 @@
+  curator-conf:
+  image: registry.aarnet.net.au/insight/curator-conf:v0.1.0
+  command: "-backend=rancher --prefix=/2015-07-25"
+  labels:
+    io.rancher.container.hostname_override: container_name
+    
+curator:
+  restart: always
+  tty: true
+  image: registry.aarnet.net.au/insight/curator
+  #net: "container:curator"
+  stdin_open: true
+  environment:
+    ELASTICSEARCH_HOST: elasticsearch
+    ELASTICSEARCH_PORT: 9200
+  external_links:
+    - ${elasticsearch_source}:elasticsearch
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: curator-conf
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: es_management=curator
