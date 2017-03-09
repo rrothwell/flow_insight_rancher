@@ -1,6 +1,6 @@
 ---
 name: FlowInsightC
-description: "Curator: manage the ElasticSearch indices for FlowInsight. On a schedule; transition from \"hot\" to \"warm\", snapshot, delete,  etc.."
+description: "Curator: manage the ElasticSearch indices for FlowInsight. On a schedule; transition from <<hot>> to <<warm>>, snapshot, delete,  etc.."
 version: 0.0.1-rancher1
 category: FlowInsight
 maintainer: Richard Rothwell <richard.rothwell@aarnet.edu.au>
