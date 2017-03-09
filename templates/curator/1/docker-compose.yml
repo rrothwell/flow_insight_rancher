@@ -1,4 +1,4 @@
-  curator-conf:
+curator-conf:
   image: registry.aarnet.net.au/insight/curator-conf:v0.1.0
   command: "-backend=rancher --prefix=/2015-07-25"
   labels:
