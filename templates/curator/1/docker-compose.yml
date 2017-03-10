@@ -11,7 +11,7 @@ curator:
   environment:
     ELASTICSEARCH_HOST: elasticsearch
     ELASTICSEARCH_PORT: 9200
-    SCHEDULED_HOUR: ${scheduled_hour}s
+    SCHEDULED_HOUR: ${scheduled_hour}
   external_links:
     - ${elasticsearch_source}:elasticsearch
   labels:
