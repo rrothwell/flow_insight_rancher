@@ -6,14 +6,12 @@
     
 curator:
   restart: always
-  tty: true
   image: registry.aarnet.net.au/insight/curator
   #net: "container:curator"
-  stdin_open: true
   environment:
     ELASTICSEARCH_HOST: elasticsearch
     ELASTICSEARCH_PORT: 9200
-    SCHEDULED_HOUR: ${scheduled_hour}
+    SCHEDULED_HOUR: ${scheduled_hour}s
   external_links:
     - ${elasticsearch_source}:elasticsearch
   labels:
