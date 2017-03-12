@@ -37,5 +37,6 @@ kibana4:
   stdin_open: true
   environment:
     ELASTICSEARCH_URL: "http://elasticsearch:9200"
+    ELASTICSEARCH_REQUESTTIMEOUT: "${request_timeout}"
   labels:
     io.rancher.container.hostname_override: container_name

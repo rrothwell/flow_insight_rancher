@@ -15,6 +15,12 @@
       type: "int"
       default: 80
       required: true
+    - variable: "request_timeout"
+      label: "Request timeout/ms"
+      description: "The time limit in milliseconds for returning a response sent to ElasticSearch with every query"
+      type: "int"
+      default: 30000
+      required: false
 
 nginx-proxy:
   metadata:
