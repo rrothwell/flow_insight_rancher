@@ -5,7 +5,7 @@ kibana-vip:
   tty: true
   image: rancher/load-balancer-service
   links:
-  - nginx-proxy:kibana4
+  - nginx-proxy:flowinsight-kibana4-base
   stdin_open: true
   labels:
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
@@ -51,6 +51,8 @@ flowinsight-kibana4-datavolume:
     
 flowinsight-kibana4-base:
   restart: always
+  tty: true
+  stdin_open: true
   image: kibana:4.6.3
   net: "container:nginx-proxy"
   environment:
