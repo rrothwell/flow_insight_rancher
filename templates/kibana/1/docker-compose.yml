@@ -25,7 +25,7 @@ nginx-proxy:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: nginx-proxy-conf,flowinsight-kibana4,flowinsight-kibana4-datavolume,flowinsight-kibana4-base
-    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    #io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.scheduler.affinity:host_label: es_management=kibana
   external_links:
     - ${elasticsearch_source}:elasticsearch
