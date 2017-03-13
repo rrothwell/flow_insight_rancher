@@ -1,12 +1,5 @@
 # See: https://www.elastic.co/guide/en/kibana/4.6/kibana-server-properties.html
 
-{{ if exists "/self/service/metadata//kibana4" }}
-Debug: 'metadata exists {{ getv "/self/service/metadata/kibana4" }}'
-{{ else }}
-No metadata
-{{ end }}
-
-
 # Kibana is served by a back end server. This controls which port to use.
 # server.port: 5601
 
@@ -21,8 +14,8 @@ No metadata
 # server.maxPayloadBytes: 1048576
 
 # The Elasticsearch instance to use for all your queries.
-{{ if exists "/self/service/metadata/kibana4/yml/elasticsearch_url" }}
-elasticsearch.url: '{{ getv "/self/service/metadata/kibana4/yml/elasticsearch_url" }}'
+{{ if exists "/self/service/metadata/kibana4/conf/elasticsearch_url" }}
+elasticsearch.url: '{{ getv "/self/service/metadata/kibana4/conf/elasticsearch_url" }}'
 {{ else }}
 elasticsearch.url: 'http://localhost:9200'
 {{ end }}
@@ -67,8 +60,8 @@ elasticsearch.url: 'http://localhost:9200'
 
 # Time in milliseconds to wait for responses from the back end or elasticsearch.
 # This must be > 0
-{{ if exists "/self/service/metadata/kibana4/yml/request_timeout" }}
-elasticsearch.requestTimeout: '{{ getv "/self/service/metadata/kibana4/yml/request_timeout" }}'
+{{ if exists "/self/service/metadata/kibana4/conf/request_timeout" }}
+elasticsearch.requestTimeout: '{{ getv "/self/service/metadata/kibana4/conf/request_timeout" }}'
 {{ else }}
 elasticsearch.requestTimeout: 30000
 {{ end }}
