@@ -14,8 +14,8 @@
 # server.maxPayloadBytes: 1048576
 
 # The Elasticsearch instance to use for all your queries.
-{{ if exists "/self/service/metadata/flowinsight-kibana4/yml/elasticsearch_url" }}
-elasticsearch.url: '{{ getv "/self/service/metadata/flowinsight-kibana4/yml/elasticsearch_url" }}'
+{{ if exists "/self/service/metadata/kibana4/yml/elasticsearch_url" }}
+elasticsearch.url: '{{ getv "/self/service/metadata/kibana4/yml/elasticsearch_url" }}'
 {{ else }}
 elasticsearch.url: 'http://localhost:9200'
 {{ end }}
@@ -60,8 +60,8 @@ elasticsearch.url: 'http://localhost:9200'
 
 # Time in milliseconds to wait for responses from the back end or elasticsearch.
 # This must be > 0
-{{ if exists "/self/service/metadata/flowinsight-kibana4/yml/request_timeout" }}
-elasticsearch.requestTimeout: '{{ getv "/self/service/metadata/flowinsight-kibana4/yml/request_timeout" }}'
+{{ if exists "/self/service/metadata/kibana4/yml/request_timeout" }}
+elasticsearch.requestTimeout: '{{ getv "/self/service/metadata/kibana4/yml/request_timeout" }}'
 {{ else }}
 elasticsearch.requestTimeout: 30000
 {{ end }}

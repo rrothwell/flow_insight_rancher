@@ -25,7 +25,7 @@
       label: "Request timeout/ms"
       description: "The time limit in milliseconds for returning a response sent to ElasticSearch with every query"
       type: "int"
-      default: 30000
+      default: 60000
       required: false
 
 nginx-proxy:
@@ -37,7 +37,7 @@ nginx-proxy:
 
 flowinsight-kibana4:
   metadata:
-    farm:
+    kibana4:
       yml:
         elasticsearch_url: "${elasticsearch_url}"
         request_timeout: "${request_timeout}"
