@@ -24,13 +24,13 @@ nginx-proxy:
     - nginx-proxy-conf
   labels:
     io.rancher.container.hostname_override: container_name
-    io.rancher.sidekicks: nginx-proxy-conf,kibana4,flowinsight-kibana4-datavolume,kibana4-base
+    io.rancher.sidekicks: nginx-proxy-conf,flowinsight-kibana4,flowinsight-kibana4-datavolume,flowinsight-kibana4-base
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.scheduler.affinity:host_label: es_management=kibana
   external_links:
     - ${elasticsearch_source}:elasticsearch
 
-kibana4:
+flowinsight-kibana4:
   image: registry.aarnet.net.au/insight/kibana-conf:latest
   labels:
     io.rancher.container.hostname_override: container_name
@@ -50,7 +50,7 @@ flowinsight-kibana4-datavolume:
     - "/opt/kibana/config"
   entrypoint: /bin/true    
     
-kibana4-base:
+flowinsight-kibana4-base:
   restart: always
   image: kibana:4.6.3
   net: "container:nginx-proxy"
