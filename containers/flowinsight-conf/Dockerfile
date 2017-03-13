@@ -8,7 +8,5 @@ ADD ./templates /etc/confd/templates
 ADD ./run.sh /run.sh
 ADD ./dockerentry.sh /dockerentry.sh
 
-VOLUME /data/confd
-
 ENTRYPOINT ["/dockerentry.sh"]
 CMD ["--backend", "rancher", "--prefix", "/2015-07-25"]
