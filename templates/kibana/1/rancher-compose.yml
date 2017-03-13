@@ -34,10 +34,7 @@ nginx-proxy:
       conf:
         servername: "kibana"
         upstream_port: 5601
-
-flowinsight-kibana4:
-  metadata:
     kibana4:
-      yml:
+      conf:
         elasticsearch_url: "${elasticsearch_url}"
         request_timeout: "${request_timeout}"
