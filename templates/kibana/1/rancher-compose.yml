@@ -15,6 +15,12 @@
       type: "int"
       default: 80
       required: true
+    - variable: "elasticsearch_url"
+      label: "ElasticSearch URL"
+      description: "The location of the ElasticSearch client node."
+      type: "string"
+      default: "http://elasticsearch:9200"
+      required: false
     - variable: "request_timeout"
       label: "Request timeout/ms"
       description: "The time limit in milliseconds for returning a response sent to ElasticSearch with every query"
@@ -28,3 +34,10 @@ nginx-proxy:
       conf:
         servername: "kibana"
         upstream_port: 5601
+
+flowinsight-kibana4:
+  metadata:
+    farm:
+      yml:
+        elasticsearch_url: "${elasticsearch_url}"
+        request_timeout: "${request_timeout}"
