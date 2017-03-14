@@ -1,6 +1,6 @@
 [template]
 src = "kibana.tmpl"
-dest = "/opt/kibana/config/kibana.yml"
+dest = "/opt/kibana/config/kibana.yml.new"
 keys = [
   "/self/service",
   "/containers",

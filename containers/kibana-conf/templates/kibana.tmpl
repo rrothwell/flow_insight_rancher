@@ -15,9 +15,9 @@
 
 # The Elasticsearch instance to use for all your queries.
 {{ if exists "/self/service/metadata/kibana4/conf/elasticsearch_url" }}
-elasticsearch.url: '{{ getv "/self/service/metadata/kibana4/conf/elasticsearch_url" }}'
+elasticsearch.url: "{{ getv "/self/service/metadata/kibana4/conf/elasticsearch_url" }}"
 {{ else }}
-elasticsearch.url: 'http://localhost:9200'
+elasticsearch.url: "http://localhost:9200"
 {{ end }}
 
 # preserve_elasticsearch_host true will send the hostname specified in `elasticsearch`. If you set it to false,
@@ -61,7 +61,7 @@ elasticsearch.url: 'http://localhost:9200'
 # Time in milliseconds to wait for responses from the back end or elasticsearch.
 # This must be > 0
 {{ if exists "/self/service/metadata/kibana4/conf/request_timeout" }}
-elasticsearch.requestTimeout: '{{ getv "/self/service/metadata/kibana4/conf/request_timeout" }}'
+elasticsearch.requestTimeout: {{ getv "/self/service/metadata/kibana4/conf/request_timeout" }}
 {{ else }}
 elasticsearch.requestTimeout: 30000
 {{ end }}

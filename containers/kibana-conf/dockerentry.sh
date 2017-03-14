@@ -19,15 +19,8 @@ cp /run.sh /usr/local/bin/
 
 echo After copying run.sh
 
-# Backup the existing config file.
-
 # The volume sidekick needs to share opt/kibana/config as a volume for this to work.
 # Then kibana-conf will be able to see the same opt/kibana/config as the main container.
 
-mv /opt/kibana/config/kibana.yml /opt/kibana/config/kibana.yml.bak
-
 # Build the new config file.
 exec /confd $@
-
-# Flag the new config file as being ready now.
-touch /opt/kibana/config/ready
