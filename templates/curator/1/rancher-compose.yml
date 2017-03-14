@@ -10,13 +10,91 @@
       required: true
       default: "flow-insight-es/elasticsearch-query-clients"
     - variable: "scheduled_hour"
-      label: "When/hour"
+      label: "Run Curator daily on hour."
       description: "Scheduled hour for processing (24h clock local time)."
       type: "enum"
       options:
           - "00"
           - "01"
           - "02"
+          - "03"
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+          - "09"
+          - "10"
+          - "11"
+          - "12"
+          - "13"
+          - "14"
+          - "15"
+          - "16"
+          - "17"
+          - "18"
+          - "19"
+          - "20"
+          - "21"
+          - "22"
+          - "23"
+      default: "01"
+      required: true
+    - variable: "index_relocate_days"
+      label: "Relocate index after/days"
+      description: "Move the index from the hot node to the warm node after some days."
+      type: "enum"
+      options:
+          - "01"
+          - "02"
+      default: "01"
+      required: true
+    - variable: "index_forcemerge_days"
+      label: "Optimise indices after/days"
+      description: "Forcemerge the indexes on the warm nodes after N days. Must be greater than index_relocate_days."
+      type: "enum"
+      options:
+          - "01"
+          - "02"
+          - "03"
+      default: "01"
+      required: true
+    - variable: "index_delete_days"
+      label: "Delete indices after/days"
+      description: "Delete the indexes on the warm nodes after N days. Must be greater than index_relocate_days and likely greater than index_forcemerge_days."
+      type: "enum"
+      options:
+          - "02"
+          - "03"
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+          - "09"
+          - "10"
+      default: "01"
+      required: true
+    - variable: "snapshot_create_days"
+      label: "Create an snapshot after/days"
+      description: "Create an index snapshot from the warm nodes after N days. Must be greater than index_relocate_days and less than index_delete_days."
+      type: "enum"
+      options:
+          - "02"
+          - "03"
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+          - "09"
+      default: "01"
+      required: true
+    - variable: "snapshot_delete_days"
+      label: "Delete a snapshot after/days"
+      description: "Delete an index snapshot from the snapshot volumne after N days. Must be greater than snapshot_create_days."
+      type: "enum"
+      options:
           - "03"
           - "04"
           - "05"
@@ -47,3 +125,9 @@ curator:
       yml:
         elasticsearch_source: "${elasticsearch_source}"
         scheduled_hour: "${scheduled_hour}"
+        index_relocate_days: ${index_relocate_days}
+        index_forcemerge_days: ${index_forcemerge_days}
+        index_delete_days: ${index_delete_days}
+        snapshot_create_days: ${snapshot_create_days}
+        snapshot_delete_days: ${snapshot_delete_days}
+

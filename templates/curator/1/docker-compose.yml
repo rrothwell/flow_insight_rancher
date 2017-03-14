@@ -12,6 +12,11 @@ curator:
     ELASTICSEARCH_HOST: elasticsearch
     ELASTICSEARCH_PORT: 9200
     SCHEDULED_HOUR: ${scheduled_hour}
+    INDEX_RELOCATE_DAYS: ${index_relocate_days}
+    INDEX_FORCEMERGE_DAYS: ${index_forcemerge_days}
+    INDEX_DELETE_DAYS: ${index_delete_days}
+    SNAPSHOT_CREATE_DAYS: ${snapshot_create_days}
+    SNAPSHOT_DELETE_DAYS: ${snapshot_delete_days}
   external_links:
     - ${elasticsearch_source}:elasticsearch
   labels:
