@@ -27,6 +27,12 @@
       type: "int"
       default: 60000
       required: false
+    - variable: "proxy_read_timeout"
+      label: "Proxy read timeout/s"
+      description: "The time limit in seconds for Kibana returning a response to nginx. "
+      type: "int"
+      default: 60
+      required: false
 
 nginx-proxy:
   metadata:
@@ -34,7 +40,8 @@ nginx-proxy:
       conf:
         servername: "kibana"
         upstream_port: 5601
+        proxy_read_timeout: ${proxy_read_timeout}
     kibana4:
       conf:
         elasticsearch_url: "${elasticsearch_url}"
-        request_timeout: "${request_timeout}"
+        request_timeout: ${request_timeout}

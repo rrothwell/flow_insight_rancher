@@ -12,7 +12,7 @@ kibana-vip:
     io.rancher.scheduler.affinity:host_label: es_management=kibana
   
 nginx-proxy-conf:
-  image: rancher/nginx-conf:v0.2.0
+  image: registry.aarnet.net.au/insight/nginx-conf
   command: "-backend=rancher --prefix=/2015-07-25"
   labels:
     io.rancher.container.hostname_override: container_name
