@@ -11,7 +11,7 @@
       default: "flow-insight-es/elasticsearch-query-clients"
     - variable: "scheduled_hour"
       label: "Run Curator daily on hour."
-      description: "Scheduled hour for processing (24h clock local time)."
+      description: "Scheduled hour for processing (24h clock UTC)."
       type: "enum"
       options:
           - "00"
