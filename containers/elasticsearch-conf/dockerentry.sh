@@ -9,6 +9,7 @@ while [ ! -d "/opt/rancher/bin/" ]; do
     echo "Waiting for /opt/rancher/bin/"
     sleep 1
 done
+echo "Found /opt/rancher/bin/ so copying run.sh"
 cp /run.sh /opt/rancher/bin/
 
 # Wait for /usr/share/elasticsearch/config to appear so we can verify its access privileges.
@@ -16,6 +17,7 @@ while [ ! -d "/usr/share/elasticsearch/config" ]; do
     echo "Waiting for /usr/share/elasticsearch/config"
     sleep 1
 done
+echo "Listing of /usr/share/elasticsearch/config:"
 ls -al /usr/share/elasticsearch/config
 
 # Wait for /usr/share/elasticsearch/config/scripts to appear so we can verify its access privileges.
@@ -24,6 +26,7 @@ while [ ! -d "/usr/share/elasticsearch/config/scripts" ]; do
     echo "Waiting for /usr/share/elasticsearch/config/scripts"
     sleep 1
 done
+echo "Listing of /usr/share/elasticsearch/config/scripts:"
 ls -al /usr/share/elasticsearch/config/scripts
 
 
@@ -32,5 +35,6 @@ while [ ! -d "/usr/share/elasticsearch/config/" ]; do
     echo "Waiting for /usr/share/elasticsearch/config/"
     sleep 1
 done
+echo "Found /usr/share/elasticsearch/config/"
 
 exec /confd $@
