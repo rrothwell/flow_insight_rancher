@@ -13,8 +13,10 @@ while [ ! -f "/opt/kibana/config/kibana.yml.new" ]; do
 done
 
 # Backup the existing config file and put in its place the new config file.
+# We keep a copy of kibana.yml.new as it also acts as a ready flag.
+# If its not there a restart enters an infinite loop.
 mv /opt/kibana/config/kibana.yml /opt/kibana/config/kibana.yml.bak
-mv /opt/kibana/config/kibana.yml.new /opt/kibana/config/kibana.yml
+cp /opt/kibana/config/kibana.yml.new /opt/kibana/config/kibana.yml
 
 # Now delegate to the original entry point to finish the kibana startup process.
 exec /docker-entrypoint.sh kibana
