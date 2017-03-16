@@ -145,7 +145,7 @@ elasticsearch-base-query-clients:
     - elasticsearch-datavolume-query-clients
   net: "container:elasticsearch-query-clients"
   environment:
-    ES_HEAP_SIZE: "2g" 
+    ES_HEAP_SIZE: "4g" 
   entrypoint:
     - /opt/rancher/bin/run.sh
 
