@@ -61,9 +61,11 @@ elasticsearch.url: "http://localhost:9200"
 # Time in milliseconds to wait for responses from the back end or elasticsearch.
 # This must be > 0
 {{ if exists "/self/service/metadata/kibana4/conf/request_timeout" }}
-elasticsearch.requestTimeout: {{ getv "/self/service/metadata/kibana4/conf/request_timeout" }}
+#elasticsearch.requestTimeout: {{ getv "/self/service/metadata/kibana4/conf/request_timeout" }}
+request_timeout: {{ getv "/self/service/metadata/kibana4/conf/request_timeout" }}
 {{ else }}
-elasticsearch.requestTimeout: 30000
+#elasticsearch.requestTimeout: 30001
+request_timeout: 30001
 {{ end }}
 
 # Header names and values that are sent to Elasticsearch. Any custom headers cannot be overwritten
