@@ -9,6 +9,7 @@
       required: true
       label: "MySQL Root Password"
       description: "Password given to the root mysql user"
+      default: "#root1234"
     - variable: "mysql_database"
       type: string
       required: true
@@ -20,17 +21,21 @@
       required: true
       description: "MySQL user for the created database"
       label: "MySQL DB User"
+      default: "flowinsight"
     - variable: "mysql_password"
       type: string
       required: true
       label: "MySQL DB Password"
+      default: "flowinsight1234"
       description: "Password for the MySQL user of the created database"
     - variable: "init_directory"
       type: string
       required: true
       label: "Initialisation directory."
       default: "/srv/network_registry/init_data"
-      description: "Path to directory containing an SQL dump file used to populate the database."
+      description: >
+          Path to directory containing an SQL dump files used to populate the database. 
+          Ensure this directory exists and the dump files are present before activating. "
 mariadb:
   scale: 1
   metadata:
