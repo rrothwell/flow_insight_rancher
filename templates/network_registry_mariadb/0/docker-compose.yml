@@ -9,7 +9,6 @@ mariadb-server:
     - 'mariadb-data'
   stdin_open: true
   tty: true
-  command: /bin/bash
 mariadb-data:
   image: registry.aarnet.net.au/insight/network_registry
   net: none
@@ -36,5 +35,5 @@ mariadb-server-base:
     - 'mariadb-data'
   labels:
     io.rancher.container.hostname_override: container_name
-  entrypoint: bash -x /usr/local/bin/network_registry_entrypoint.sh
+  entrypoint: bash -x /usr/local/bin/run.sh
 
