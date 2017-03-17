@@ -1,0 +1,7 @@
+[template]
+src = "server.cnf.tmpl"
+dest = "/etc/mysql/conf.d/server.cnf.new"
+keys = [
+  "/self/service",
+  "/containers",
+]

@@ -1,0 +1,7 @@
+[template]
+src = "my.conf.tmpl"
+dest = "/etc/my.conf.new"
+keys = [
+  "/self/service",
+  "/containers",
+]
