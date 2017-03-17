@@ -29,7 +29,7 @@
       type: string
       required: true
       label: "Initialisation directory."
-      default: "/srv/gsr/init_data"
+      default: "/srv/network_registry/init_data"
       description: "Path to directory containing an SQL dump file used to populate the database."
 mariadb:
   scale: 1

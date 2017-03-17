@@ -1,5 +1,5 @@
 mariadb-server:
-  image: registry.aarnet.net.au/insight/gsr_mariadb-conf
+  image: registry.aarnet.net.au/insight/network_registry-conf
   labels:
     io.rancher.sidekicks: mariadb-data,mariadb-server
     io.rancher.container.hostname_override: container_name
@@ -11,7 +11,7 @@ mariadb-server:
   tty: true
   command: /bin/bash
 mariadb-data:
-  image: registry.aarnet.net.au/insight/gsr_mariadb
+  image: registry.aarnet.net.au/insight/network_registry
   net: none
   environment:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
@@ -24,7 +24,7 @@ mariadb-data:
   labels:
     io.rancher.container.start_once: true
 mariadb-server-base:
-  image: registry.aarnet.net.au/insight/gsr_mariadb
+  image: registry.aarnet.net.au/insight/network_registry
   net: "container:mariadb"
   environment:
     MYSQL_ROOT_PASSWORD: "${mysql_root_password}"
@@ -36,5 +36,5 @@ mariadb-server-base:
     - 'mariadb-data'
   labels:
     io.rancher.container.hostname_override: container_name
-  entrypoint: bash -x /usr/local/bin/gsr_entrypoint.sh
+  entrypoint: bash -x /usr/local/bin/network_registry_entrypoint.sh
 
