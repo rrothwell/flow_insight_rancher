@@ -1,0 +1,10 @@
+name: Network Registry
+description: |
+    A MariaDB master/slave Cluster for storing organisation's IP address range assignments.
+    Customised with host affinity and initial database population from the GLORIAD Project.
+    Eventually a Master slave configuration for MariaDB. Initially just a single MariaDB instance will be used.
+version: 1.0.0-rancher1
+category: FlowInsight
+maintainer: Richard Rothwell <richard.rothwell@aarnet.edu.au>
+license: Apache2
+projectURL: https://git.cdn.aarnet.edu.au/aarnet_network_analytics/flow_insight_rancher

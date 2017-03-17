@@ -1,0 +1,40 @@
+mariadb-server:
+  image: registry.aarnet.net.au/insight/gsr_mariadb-conf
+  labels:
+    io.rancher.sidekicks: mariadb-data,mariadb-server
+    io.rancher.container.hostname_override: container_name
+    io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: global_science_registry=true
+  volumes_from:
+    - 'mariadb-data'
+  stdin_open: true
+  tty: true
+  command: /bin/bash
+mariadb-data:
+  image: registry.aarnet.net.au/insight/gsr_mariadb
+  net: none
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  volumes:
+    - /var/lib/mysql
+    - /etc/mysql/conf.d
+    - /usr/local/bin
+    - "${init_directory}"
+  command: /bin/true
+  labels:
+    io.rancher.container.start_once: true
+mariadb-server-base:
+  image: registry.aarnet.net.au/insight/gsr_mariadb
+  net: "container:mariadb"
+  environment:
+    MYSQL_ROOT_PASSWORD: "${mysql_root_password}"
+    MYSQL_DATABASE: "${mysql_database}"
+    MYSQL_USER: "${mysql_user}"
+    MYSQL_PASSWORD: "${mysql_password}"
+    INIT_DIRECTORY: "${init_directory}"
+  volumes_from:
+    - 'mariadb-data'
+  labels:
+    io.rancher.container.hostname_override: container_name
+  entrypoint: bash -x /usr/local/bin/gsr_entrypoint.sh
+
