@@ -18,10 +18,13 @@ mariadb-data:
     - /var/lib/mysql
     - /etc/mysql/conf.d
     - /usr/local/bin
-    - "${init_directory}"
+    - /srv/network_registry/init_data
+    #- "${init_directory}"
   command: /bin/true
   labels:
     io.rancher.container.start_once: true
+    io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: network_registry_role=master
 mariadb-server-base:
   image: registry.aarnet.net.au/insight/network_registry
   net: "container:mariadb"
@@ -35,5 +38,7 @@ mariadb-server-base:
     - 'mariadb-data'
   labels:
     io.rancher.container.hostname_override: container_name
+    io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: network_registry_role=master
   entrypoint: bash -x /usr/local/bin/run.sh
 
