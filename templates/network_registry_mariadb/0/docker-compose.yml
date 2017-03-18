@@ -27,7 +27,7 @@ mariadb-data:
     io.rancher.scheduler.affinity:host_label: network_registry_role=master
 mariadb-server-base:
   image: registry.aarnet.net.au/insight/network_registry
-  net: "container:mariadb"
+  net: "container:mariadb-master"
   environment:
     MYSQL_ROOT_PASSWORD: "${mysql_root_password}"
     MYSQL_DATABASE: "${mysql_database}"
