@@ -9,8 +9,8 @@ ADD ./run.sh /run.sh
 # merged with values queried from the Rancher metadata store.
 ADD https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-0.11.0-linux-amd64 /confd
 RUN chmod +x /confd
-ADD ./conf.d /etc/confd/conf.d
-ADD ./templates /etc/confd/templates
+ADD ./conf.d /conf.d
+ADD ./templates /templates
 
 # Put in place the entry point script for the kibana-conf container.
 # This runs confd.
