@@ -1,10 +1,10 @@
-mariadb-server:
+mariadb-master:
   image: registry.aarnet.net.au/insight/network_registry-conf
   labels:
-    io.rancher.sidekicks: mariadb-data,mariadb-server
+    io.rancher.sidekicks: mariadb-data,mariadb-server-base
     io.rancher.container.hostname_override: container_name
     io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
-    io.rancher.scheduler.affinity:host_label: global_science_registry=true
+    io.rancher.scheduler.affinity:host_label: network_registry_role=master
   volumes_from:
     - 'mariadb-data'
   stdin_open: true

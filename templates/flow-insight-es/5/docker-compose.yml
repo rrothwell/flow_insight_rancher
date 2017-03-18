@@ -204,3 +204,4 @@ kopf:
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
   links:
     - elasticsearch-query-clients:es-clients
+
