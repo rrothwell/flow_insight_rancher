@@ -16,6 +16,7 @@ mariadb-data:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   volumes:
     - /var/lib/mysql
+    - /etc
     - /etc/mysql/conf.d
     - /usr/local/bin
     - "${init_directory}"
