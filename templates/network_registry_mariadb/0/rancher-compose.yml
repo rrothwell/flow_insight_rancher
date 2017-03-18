@@ -48,12 +48,12 @@ mariadb-master:
       binlog_format=ROW
       default-storage-engine=innodb
       progress=1
-mariadb-lb:
-  scale: 1
-  load_balancer_config: {}
-  health_check:
-    port: 42
-    interval: 2000
-    unhealthy_threshold: 3
-    healthy_threshold: 2
-    response_timeout: 2000
+#mariadb-lb:
+#  scale: 1
+#  load_balancer_config: {}
+#  health_check:
+#    port: 42
+#    interval: 2000
+#    unhealthy_threshold: 3
+#    healthy_threshold: 2
+#    response_timeout: 2000
