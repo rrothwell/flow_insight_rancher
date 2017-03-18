@@ -25,8 +25,8 @@ while [ ! -d "/etc" ]; do
     sleep 1
 done
 mkdir /etc/confd
-cp /conf.d /etc/confd
-cp /templates /etc/confd
+cp -R /conf.d /etc/confd
+cp -R /templates /etc/confd
 echo After copying confd data
 
 # Build the new config file.
