@@ -36,7 +36,7 @@
       description: >
           Path to directory containing an SQL dump files used to populate the database. 
           Ensure this directory exists and the dump files are present before activating. "
-mariadb:
+mariadb-master:
   scale: 1
   metadata:
     mysqld: |
