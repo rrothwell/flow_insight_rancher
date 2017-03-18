@@ -1,6 +1,6 @@
 [template]
-src = "my.conf.tmpl"
-dest = "/etc/my.conf.new"
+src = "my.cnf.tmpl"
+dest = "/etc/my.cnf.new"
 keys = [
   "/self/service",
   "/containers",
