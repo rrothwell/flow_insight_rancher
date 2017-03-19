@@ -32,7 +32,7 @@
       type: string
       required: true
       label: "Initialisation directory."
-      default: "/srv/network_registry/init_data"
+      default: "/srv/network_registry/init_data" 
       description: >
           Path to directory containing an SQL dump files used to populate the database. 
           Ensure this directory exists and the dump files are present before activating. "

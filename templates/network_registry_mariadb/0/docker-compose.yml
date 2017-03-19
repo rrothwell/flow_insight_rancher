@@ -19,7 +19,9 @@ mariadb-data:
     - /etc
     - /etc/my.cnf.d
     - /usr/local/bin
-    - "${init_directory}"
+    - "${init_directory}:${init_directory}"
+    - /srv/insight/farm/passwords:/srv/insight/farm/passwords
+
   entrypoint: /bin/true
   labels:
     io.rancher.container.start_once: true
