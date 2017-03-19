@@ -19,17 +19,17 @@ mv /etc/my.cnf /etc/my.cnf.bak
 cp /etc/my.cnf.new /etc/my.cnf
 
 
-echo "Wait for /etc/mysql/conf.d/server.cnf.new"
+echo "Wait for /etc/my.cnf.d/server.cnf.new"
 # Wait for the new server.cnf to appear so MariaDB will pick the new configuration.
-while [ ! -f "/etc/mysql/conf.d/server.cnf.new" ]; do
-    echo "Waiting for /etc/mysql/conf.d/server.cnf.new"
+while [ ! -f "/etc/my.cnf.d/server.cnf.new" ]; do
+    echo "Waiting for /etc/my.cnf.d/server.cnf.new"
     sleep 1
 done
-echo "Found /etc/mysql/my.server.new"
+echo "Found /etc/my.cnf.d/server.cnf.new"
 
 # Backup the existing config file and put in its place the new config file.
-mv /etc/mysql/conf.d/server.cnf /etc/mysql/conf.d/server.cnf.bak
-cp /etc/mysql/conf.d/server.cnf.new /etc/mysql/conf.d/server.cnf
+mv /etc/my.cnf.d/server.cnf /etc/my.cnf.d/server.cnf.bak
+cp /etc/my.cnf.d/server.cnf.new /etc/my.cnf.d/server.cnf
 
 echo "New MariaDB config files placed so now run normal docker entry point script. "
 

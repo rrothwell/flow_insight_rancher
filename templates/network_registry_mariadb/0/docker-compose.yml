@@ -17,7 +17,7 @@ mariadb-data:
   volumes:
     - /var/lib/mysql
     - /etc
-    - /etc/mysql/conf.d
+    - /etc/my.cnf.d
     - /usr/local/bin
     - "${init_directory}"
   entrypoint: /bin/true

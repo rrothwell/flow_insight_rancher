@@ -19,7 +19,7 @@ mariadb-galera-data:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   volumes:
     - /var/lib/mysql
-    - /etc/mysql/conf.d
+    - /etc/my.cnf.d
     - /docker-entrypoint-initdb.d
     - /opt/rancher
   command: /bin/true
