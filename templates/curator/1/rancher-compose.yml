@@ -73,7 +73,7 @@
           - "8"
           - "9"
           - "10"
-      default: "3"
+      default: "5"
       required: true
     - variable: "snapshot_create_days"
       label: "Create an snapshot after/days"
@@ -88,7 +88,8 @@
           - "7"
           - "8"
           - "9"
-      default: "9"
+          - "10"
+      default: "5"
       required: true
     - variable: "snapshot_delete_days"
       label: "Delete a snapshot after/days"
