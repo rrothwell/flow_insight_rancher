@@ -71,7 +71,7 @@ elasticsearch-base-datanode:
     - elasticsearch-datavolume-datanode
   net: "container:elasticsearch-datanodes"
   environment:
-    ES_HEAP_SIZE: "12g" 
+    ES_HEAP_SIZE: "16g" 
 
 # Long term (lt) data nodes on HD storage
 elasticsearch-datanodes-lt:
@@ -113,7 +113,7 @@ elasticsearch-base-datanode-lt:
     - elasticsearch-datavolume-datanode-lt
   net: "container:elasticsearch-datanodes-lt"
   environment:
-    ES_HEAP_SIZE: "12g" 
+    ES_HEAP_SIZE: "16g" 
 
 
 elasticsearch-query-clients:
