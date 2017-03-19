@@ -34,4 +34,4 @@ cp /etc/mysql/conf.d/server.cnf.new /etc/mysql/conf.d/server.cnf
 echo "New MariaDB config files placed so now run normal docker entry point script. "
 
 # Now delegate to the original entry point to finish the kibana startup process.
-exec /docker-entrypoint.sh
+exec /usr/local/bin/docker-entrypoint.sh
