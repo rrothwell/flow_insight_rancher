@@ -5,7 +5,7 @@ flowinsight-farm:
         io.rancher.sidekicks: flowinsight-farm-base,flowinsight-farm-datavolume
         io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
         io.rancher.scheduler.affinity:host_label: flowinsight_role=pipeline
-#    links:
+#    links: xxx
 #     - flowinsight-inlet:nprobe
     volumes_from:
      - flowinsight-farm-datavolume
