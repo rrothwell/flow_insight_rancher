@@ -20,7 +20,7 @@ flowinsight-farm-datavolume:
         io.rancher.container.hostname_override: container_name
         io.rancher.container.start_once: true
     volumes:
-        - "/home/rgr/init_data:/srv/insight/init_data"
+        - "/srv/flow_cache/init_data:/srv/flow_cache/init_data"
         - "/usr/local/bin"
         - "/usr/share/flowinsight/config"
     entrypoint: /bin/true    
