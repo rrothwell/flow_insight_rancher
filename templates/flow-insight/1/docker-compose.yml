@@ -14,7 +14,7 @@ flowinsight-farm:
 #    environment:
 #     KEY: VALUE       
 flowinsight-farm-datavolume:
-    image: registry.aarnet.net.au/insight/farm:v0.1.2
+    image: registry.aarnet.net.au/insight/farm:v0.1.4
     labels:
         flowinsight.farm.config.version: '0'
         io.rancher.container.hostname_override: container_name
@@ -25,7 +25,7 @@ flowinsight-farm-datavolume:
         - "/usr/share/flowinsight/config"
     entrypoint: /bin/true    
 flowinsight-farm-base:
-    image: registry.aarnet.net.au/insight/farm:v0.1.2
+    image: registry.aarnet.net.au/insight/farm:v0.1.4
     labels:
         flowinsight.farm.config.version: '0'
         io.rancher.container.hostname_override: container_name
