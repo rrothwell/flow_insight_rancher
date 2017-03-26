@@ -1,5 +1,5 @@
 flowinsight-farm:
-    image: registry.aarnet.net.au/insight/farm-conf:v0.3.10
+    image: registry.aarnet.net.au/insight/farm-conf:v0.3.11
     labels:
         io.rancher.container.hostname_override: container_name
         io.rancher.sidekicks: flowinsight-farm-base,flowinsight-farm-datavolume
