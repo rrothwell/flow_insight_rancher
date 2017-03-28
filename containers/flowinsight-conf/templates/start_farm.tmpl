@@ -61,8 +61,14 @@ done
 #  $STARTUP_PATH/elephant.sh start vic-nbpk-pe1 1 &>>/tmp/elephant.start.out &
 #  $STARTUP_PATH/elephant.sh start vic-nbpk-pe1 2 &>>/tmp/elephant.start.out &
 
+# IPFIX record ElasticSearch indexer
   cd $FARM_PATH/mouse
   $STARTUP_PATH/mouse.sh start  &>>/tmp/mouse.start.out &
+
+
+# Statistics ElasticSearch indexer
+  cd $FARM_PATH/Hamster
+  $STARTUP_PATH/hamster.sh start  &>>/tmp/hamster.start.out &
   
   cd $FARM_PATH/rabbit
   $STARTUP_PATH/rabbit.sh start  &>>/tmp/rabbit.start.out &
