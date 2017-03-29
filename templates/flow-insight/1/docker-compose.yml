@@ -23,6 +23,7 @@ flowinsight-farm-datavolume:
         - "/srv/flow_cache/init_data:/srv/flow_cache/init_data"
         - "/usr/local/bin"
         - "/usr/share/flowinsight/config"
+        - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
     entrypoint: /bin/true    
 flowinsight-farm-base:
     image: registry.aarnet.net.au/insight/farm:v0.1.12
@@ -31,6 +32,8 @@ flowinsight-farm-base:
         io.rancher.container.hostname_override: container_name
 #    links:
 #     - flowinsight-inlet:nprobe
+    environment:
+        REPORTING_PASSWORD: "${reporting_password}"
     entrypoint:
      - /usr/local/bin/run.sh
      #- /bin/bash
