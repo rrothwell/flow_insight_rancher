@@ -3,7 +3,7 @@ elasticsearch-masters:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-master,elasticsearch-datavolume-masters
-    io.rancher.scheduler.affinity:host_label: es_node=es_master
+    io.rancher.scheduler.affinity:host_label: es_master=true
   volumes_from:
     - elasticsearch-datavolume-masters
   ports:
@@ -39,7 +39,7 @@ elasticsearch-datanodes:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode,elasticsearch-datavolume-datanode
-    io.rancher.scheduler.affinity:host_label: es_node=es_data
+    io.rancher.scheduler.affinity:host_label: es_data=true
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
   links:
     - elasticsearch-masters:es-masters
@@ -79,7 +79,7 @@ elasticsearch-datanodes-lt:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode-lt,elasticsearch-datavolume-datanode-lt
-    io.rancher.scheduler.affinity:host_label: es_node=es_data
+    io.rancher.scheduler.affinity:host_label: es_data=true
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
   links:
     - elasticsearch-masters:es-masters
@@ -121,7 +121,7 @@ elasticsearch-query-clients:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-query-clients,elasticsearch-datavolume-query-clients
-    io.rancher.scheduler.affinity:host_label: es_node=es_query_client
+    io.rancher.scheduler.affinity:host_label: es_query_client=true
   links:
     - elasticsearch-masters:es-masters
   volumes_from:
@@ -158,7 +158,7 @@ elasticsearch-index-clients:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-index-clients,elasticsearch-datavolume-index-clients
-    io.rancher.scheduler.affinity:host_label: es_node=es_index_client
+    io.rancher.scheduler.affinity:host_label: es_index_client=true
   links:
     - elasticsearch-masters:es-masters
   volumes_from:
@@ -200,7 +200,7 @@ kopf:
     KOPF_ES_SERVERS: 'es-clients:9200'
   labels:
     io.rancher.container.hostname_override: container_name
-    io.rancher.scheduler.affinity:host_label: es_management=kopf
+    io.rancher.scheduler.affinity:host_label: es_kopf=true
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
   links:
     - elasticsearch-query-clients:es-clients
