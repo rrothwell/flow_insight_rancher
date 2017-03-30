@@ -1,7 +1,7 @@
 .catalog:
   name: "FlowInsight"
   version: "2.4.3-rancher1"
-  description: "IPFIX data analytics."
+  description: "IPFIX data analytics - record decorating pipeline."
   questions:
     - variable: "router_name"
       label: "Router name"
@@ -52,12 +52,6 @@
           - "ipv6"
       default: "ipv4"
       required: true
-    - variable: "reporting_password"
-      type: string
-      required: true
-      label: "Reporting DB Password"
-      default: "gerfuffle!!"
-      description: "Password for the reporting user of the reporting database. "
 flowinsight-farm:
   metadata:
     farm:
@@ -65,4 +59,3 @@ flowinsight-farm:
         router_name: "${router_name}"
         router_scale: "${router_scale}"
         ip_version: "${ip_version}"
-        reporting_password: "${reporting_password}"
