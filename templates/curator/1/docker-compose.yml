@@ -23,4 +23,4 @@ curator:
     io.rancher.container.hostname_override: container_name
 #    io.rancher.sidekicks: curator-conf
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
-    io.rancher.scheduler.affinity:host_label: es_management=curator
+    io.rancher.scheduler.affinity:host_label: es_curator=true
