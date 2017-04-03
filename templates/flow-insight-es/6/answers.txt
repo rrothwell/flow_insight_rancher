@@ -1,0 +1,2 @@
+cluster_name=FlowInsightES
+kopf_port=80
