@@ -56,7 +56,7 @@ elasticsearch-datanodes-1:
         http.enabled: "false"
         network.host: "_site_"
         #path.data: "/data0,/data1"
-        path.data: "/data1"
+        path.data: "/data0"
         #path.work: "/work"
         #path.plugins: "/plugins"
         processors: 5
