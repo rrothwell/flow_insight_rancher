@@ -1,7 +1,7 @@
 ---
-name: FlowInsight
+name: FlowInsight Reporter
 description: >
-  A data analytics processing pipeline for IPFIX streams.
+  A scheduled reporting application for IPFIX records saved in ElasticSearch.
 version: 0.0.1-rancher1
 category: FlowInsight
 maintainer: Richard Rothwell <richard.rothwell@aarnet.edu.au>

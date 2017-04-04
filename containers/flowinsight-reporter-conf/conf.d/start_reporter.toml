@@ -1,0 +1,7 @@
+[template]
+src = "start_reporter.tmpl"
+dest = "/usr/local/bin/lifecycle/start_reporter.sh"
+keys = [
+  "/self/service",
+  "/containers",
+]

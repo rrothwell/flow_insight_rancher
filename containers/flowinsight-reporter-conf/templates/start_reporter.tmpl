@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Placed by confd. Do not hand edit.
+
+# FlowInsight reporter (called farm/rooster). 
+
+STARTUP_PATH=/usr/local/bin/lifecycle
+FARM_PATH=/srv/insight/farm
+
+PASSWORD_FILE="$FARM_PATH/passwords/corvu_password.pl"
+
+while [[ ! -e "$PASSWORD_FILE" ]] ; do
+    echo "Waiting for populated database. "
+	sleep 10
+done
+
+
+{{ if exists "/self/service/metadata/farm/yml/reporting_password" }}
+REPORTING_PASSWORD='{{ getv "/self/service/metadata/farm/yml/reporting_password" }}'
+{{ end }}
+
+# Farm processors
+  
+  cd $FARM_PATH/rooster
+  $STARTUP_PATH/rooster.sh start  &>>/tmp/rooster.start.out &
+
+exit 0

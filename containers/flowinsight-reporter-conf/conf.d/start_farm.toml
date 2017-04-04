@@ -1,7 +1,0 @@
-[template]
-src = "start_farm.tmpl"
-dest = "/usr/local/bin/lifecycle/start_farm.sh"
-keys = [
-  "/self/service",
-  "/containers",
-]

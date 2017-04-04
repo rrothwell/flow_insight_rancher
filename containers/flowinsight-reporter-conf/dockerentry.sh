@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 echo Copying run.sh
 
 # Wait for volume sidekick to mount /usr/local/bin.

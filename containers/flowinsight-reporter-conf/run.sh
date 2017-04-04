@@ -2,7 +2,7 @@
 
 set -e
 
-while [ ! -f "/usr/local/bin/lifecycle/start_farm.sh" ]; do
+while [ ! -f "/usr/local/bin/lifecycle/start_reporter.sh" ]; do
     sleep 1
 done
 
