@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+# Placed by confd. Do not hand edit.
+
+# FlowInsight data processing pipeline (called farm). 
+
+STARTUP_PATH=/usr/local/bin/lifecycle
+FARM_PATH=/srv/insight/farm
+
+PASSWORD_FILE="$FARM_PATH/passwords/local_password.pl"
+
+while [[ ! -e "$PASSWORD_FILE" ]] ; do
+    echo "Waiting for populated database. "
+	sleep 10
+done
+
+# Farm collectors
+
+ROUTER_NAME='vic-nbpk-pe1'
+IP_VERSION='ipv4'
+ROUTER_SCALE=1
+
+{{ if exists "/self/service/metadata/farm/yml/router_name" }}
+ROUTER_NAME='{{ getv "/self/service/metadata/farm/yml/router_name" }}'
+{{ end }}
+
+{{ if exists "/self/service/metadata/farm/yml/ip_version" }}
+IP_VERSION='{{ getv "/self/service/metadata/farm/yml/ip_version" }}'
+{{ end }}
+
+{{ if exists "/self/service/metadata/farm/yml/router_scale" }}
+ROUTER_SCALE='{{ getv "/self/service/metadata/farm/yml/router_scale" }}'
+{{ end }}
+
+$STARTUP_PATH/magpie.sh start $ROUTER_NAME $IP_VERSION   &>>/tmp/magpie.start.out &
+
+#  $STARTUP_PATH/magpie.sh start sa-adel-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start sa-prka-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start wa-knsg-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start wa-eper-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start act-actn-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start act-dksn-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start vic-nbpk-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start vic-crlt-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start vic-wmlb-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start tas-hbrt-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start tas-hbrt-pe2 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start akl-wnpa-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start akl-tkpa-pe1 ipv4   &>>/tmp/magpie.start.out &
+#  $STARTUP_PATH/magpie.sh start pretend-router ipv4   &>>/tmp/magpie.start.out &
+
+
+# Farm processors
+
+cd $FARM_PATH/elephant
+for ELEPHANT_INDEX in `seq 1 $ROUTER_SCALE`;
+do
+    $STARTUP_PATH/elephant.sh start $ROUTER_NAME $ELEPHANT_INDEX &>>/tmp/elephant.start.out &
+    echo "Elephant instance: $ELEPHANT_INDEX"
+done     
+#  $STARTUP_PATH/elephant.sh start vic-nbpk-pe1 1 &>>/tmp/elephant.start.out &
+#  $STARTUP_PATH/elephant.sh start vic-nbpk-pe1 2 &>>/tmp/elephant.start.out &
+
+# IPFIX record ElasticSearch indexer
+  cd $FARM_PATH/mouse
+  $STARTUP_PATH/mouse.sh start  &>>/tmp/mouse.start.out &
+
+
+# Statistics ElasticSearch indexer
+  cd $FARM_PATH/Hamster
+  $STARTUP_PATH/hamster.sh start  &>>/tmp/hamster.start.out &
+  
+  cd $FARM_PATH/rabbit
+  $STARTUP_PATH/rabbit.sh start  &>>/tmp/rabbit.start.out &
+  
+#  $STARTUP_PATH/guarddog.sh start &>>/tmp/guarddog.start.out &
+#  $STARTUP_PATH/sheepdog.sh start &>>/tmp/sheepdog.start.out &
+
+  cd $FARM_PATH/fish
+  $STARTUP_PATH/fish.sh start  &>>/tmp/fish.start.out &
+  
+  cd $FARM_PATH/rooster
+  $STARTUP_PATH/rooster.sh start  &>>/tmp/rooster.start.out &
+
+exit 0

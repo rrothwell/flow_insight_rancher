@@ -1,0 +1,44 @@
+flowinsight-farm:
+    image: registry.aarnet.net.au/insight/farm-conf:v0.3.11
+    labels:
+        io.rancher.container.hostname_override: container_name
+        io.rancher.sidekicks: flowinsight-farm-base,flowinsight-farm-datavolume
+        io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+        io.rancher.scheduler.affinity:host_label: flowinsight_role=pipeline
+#    links: xxx
+#     - flowinsight-inlet:nprobe
+    volumes_from:
+     - flowinsight-farm-datavolume
+#    ports:
+#        - "9797:22"    
+#    environment:
+#     KEY: VALUE       
+flowinsight-farm-datavolume:
+    image: registry.aarnet.net.au/insight/farm:v0.1.12
+    labels:
+        flowinsight.farm.config.version: '0'
+        io.rancher.container.hostname_override: container_name
+        io.rancher.container.start_once: true
+    volumes:
+        - "/srv/flow_cache/init_data:/srv/flow_cache/init_data"
+        - "/usr/local/bin"
+        - "/usr/share/flowinsight/config"
+        - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
+    entrypoint: /bin/true    
+flowinsight-farm-base:
+    image: registry.aarnet.net.au/insight/farm:v0.1.12
+    labels:
+        flowinsight.farm.config.version: '0'
+        io.rancher.container.hostname_override: container_name
+#    links:
+#     - flowinsight-inlet:nprobe
+    environment:
+        REPORTING_PASSWORD: "${reporting_password}"
+    entrypoint:
+     - /usr/local/bin/run.sh
+     #- /bin/bash
+    #command: -c "while [ ! -f /usr/local/bin/run.sh ] > /dev/null; do echo Waiting for run.sh; sleep 1; done; /usr/local/bin/run.sh" 
+    volumes_from:
+     - flowinsight-farm-datavolume
+    net: "container:flowinsight-farm"
+
