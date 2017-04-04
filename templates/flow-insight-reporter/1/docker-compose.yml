@@ -4,7 +4,7 @@ flowinsight-reporter:
         io.rancher.container.hostname_override: container_name
         io.rancher.sidekicks: flowinsight-reporter-base,flowinsight-reporter-datavolume
         io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
-        io.rancher.scheduler.affinity:host_label: flowinsight_role=pipeline
+        io.rancher.scheduler.affinity:host_label: flowinsight_reporter=true
     volumes_from:
      - flowinsight-reporter-datavolume
 flowinsight-reporter-datavolume:
