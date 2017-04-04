@@ -1,5 +1,5 @@
 flowinsight-reporter:
-    image: registry.aarnet.net.au/insight/reporter-conf:v0.3.11
+    image: registry.aarnet.net.au/insight/reporter-conf:v0.0.1
     labels:
         io.rancher.container.hostname_override: container_name
         io.rancher.sidekicks: flowinsight-reporter-base,flowinsight-reporter-datavolume
@@ -8,7 +8,7 @@ flowinsight-reporter:
     volumes_from:
      - flowinsight-reporter-datavolume
 flowinsight-reporter-datavolume:
-    image: registry.aarnet.net.au/insight/reporter:v0.1.12
+    image: registry.aarnet.net.au/insight/reporter:v0.0.1
     labels:
         flowinsight.reporter.config.version: '0'
         io.rancher.container.hostname_override: container_name
@@ -20,7 +20,7 @@ flowinsight-reporter-datavolume:
         - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
     entrypoint: /bin/true    
 flowinsight-reporter-base:
-    image: registry.aarnet.net.au/insight/reporter:v0.1.12
+    image: registry.aarnet.net.au/insight/reporter:v0.0.1
     labels:
         flowinsight.reporter.config.version: '0'
         io.rancher.container.hostname_override: container_name
