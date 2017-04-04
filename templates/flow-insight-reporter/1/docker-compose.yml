@@ -14,7 +14,7 @@ flowinsight-reporter-datavolume:
         io.rancher.container.hostname_override: container_name
         io.rancher.container.start_once: true
     volumes:
-        - "/srv/reporter/init_data:/srv/reporter/init_data"
+        #- "/srv/reporter/init_data:/srv/reporter/init_data"
         - "/usr/local/bin"
         - "/usr/share/flowinsight/config"
         - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
