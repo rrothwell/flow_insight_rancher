@@ -40,7 +40,7 @@ elasticsearch-datanodes-0:
         path.data: "/data0"
         #path.work: "/work"
         #path.plugins: "/plugins"
-        processors: 5
+        processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
         node.box_type: hot
@@ -59,7 +59,7 @@ elasticsearch-datanodes-1:
         path.data: "/data0"
         #path.work: "/work"
         #path.plugins: "/plugins"
-        processors: 5
+        processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
         node.box_type: hot
@@ -78,7 +78,7 @@ elasticsearch-datanodes-lt0:
         path.data: "/data0,/data1"
         #path.work: "/work"
         #path.plugins: "/plugins"
-        processors: 5
+        processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
         node.box_type: warm
@@ -97,7 +97,7 @@ elasticsearch-datanodes-lt1:
         path.data: "/data0,/data1"
         #path.work: "/work"
         #path.plugins: "/plugins"
-        processors: 5
+        processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
         node.box_type: warm
