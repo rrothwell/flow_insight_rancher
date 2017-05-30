@@ -11,8 +11,8 @@
 
 sudo mkdir -p /elasticsearch/config
 sudo mkdir -p /elasticsearch/config_lt
-sudo chown 100:101 /elasticsearch/config
-sudo chown 100:101 /elasticsearch/config_lt
+sudo chown 5000:5000 /elasticsearch/config
+sudo chown 5000:5000 /elasticsearch/config_lt
 
 # May need to delete these 2 config files if not up-to-date with rancher-compose.yml
 #rm -f /elasticsearch/config/elasticsearch.yml 
@@ -66,9 +66,9 @@ EOF
 # ElasticSearch short term datanode logging
 
 sudo mkdir -p /var/log/elasticsearch
-sudo chown 100:101 /var/log/elasticsearch
+sudo chown 5000:5000 /var/log/elasticsearch
 
 # ElasticSearch long term datanode logging
 
 sudo mkdir -p /var/log/elasticsearch_lt
-sudo chown 100:101 /var/log/elasticsearch_lt
+sudo chown 5000:5000 /var/log/elasticsearch_lt

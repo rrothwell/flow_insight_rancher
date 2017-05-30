@@ -11,8 +11,8 @@
 sudo mkdir -p /disks/ssde/elasticsearch_data
 sudo mkdir -p /disks/ssdf/elasticsearch_data
 
-sudo chown 100:101 /disks/ssde/elasticsearch_data
-sudo chown 100:101 /disks/ssdf/elasticsearch_data
+sudo chown 5000:5000 /disks/ssde/elasticsearch_data
+sudo chown 5000:5000 /disks/ssdf/elasticsearch_data
 
 
 # ElasticSearch long term datanode
@@ -22,8 +22,8 @@ sudo mkdir -p /disks/sdc/elasticsearch_data
 sudo mkdir -p /disks/sdb10/elasticsearch_data
 sudo mkdir -p /disks/sda10/elasticsearch_data
 
-sudo chown 100:101 /disks/sdd/elasticsearch_data
-sudo chown 100:101 /disks/sdc/elasticsearch_data
-sudo chown 100:101 /disks/sdb10/elasticsearch_data
-sudo chown 100:101 /disks/sda10/elasticsearch_data
+sudo chown 5000:5000 /disks/sdd/elasticsearch_data
+sudo chown 5000:5000 /disks/sdc/elasticsearch_data
+sudo chown 5000:5000 /disks/sdb10/elasticsearch_data
+sudo chown 5000:5000 /disks/sda10/elasticsearch_data
 
