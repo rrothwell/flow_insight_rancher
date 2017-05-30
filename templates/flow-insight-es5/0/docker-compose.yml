@@ -1,0 +1,290 @@
+elasticsearch-masters:
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elasticsearch-base-master,elasticsearch-datavolume-masters
+    io.rancher.scheduler.affinity:host_label: es_master=true
+  volumes_from:
+    - elasticsearch-datavolume-masters
+  ports:
+    - "9200:9200"
+elasticsearch-datavolume-masters:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - /usr/share/elasticsearch/data
+    - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
+    - /opt/rancher/bin
+  entrypoint: /bin/true
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+elasticsearch-base-master:
+  labels:
+    elasticsearch.master.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+  net: "container:elasticsearch-masters"
+  volumes_from:
+    - elasticsearch-datavolume-masters
+  environment:
+    ES_HEAP_SIZE: "2g" 
+  entrypoint:
+    - /opt/rancher/bin/run.sh
+
+# Short term data nodes on SSD storage
+elasticsearch-datanodes-0:
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elasticsearch-base-datanode-0,elasticsearch-datavolume-datanode-0
+    io.rancher.scheduler.affinity:host_label: es_data=true
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+  links:
+    - elasticsearch-masters:es-masters
+  volumes_from:
+    - elasticsearch-datavolume-datanode-0
+elasticsearch-datavolume-datanode-0:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - /disks/ssde/elasticsearch_data:/data0
+    #- /disks/ssdf/elasticsearch_data:/data1
+    - /elasticsearch/config0:/usr/share/elasticsearch/config
+    - /elasticsearch/config0/scripts:/usr/share/elasticsearch/config/scripts
+    - /opt/rancher/bin
+  entrypoint: /bin/true
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+elasticsearch-base-datanode-0:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+  links:
+    - elasticsearch-masters:es-masters
+  entrypoint:
+    - /opt/rancher/bin/run.sh
+  volumes_from:
+    - elasticsearch-datavolume-datanode-0
+  net: "container:elasticsearch-datanodes-0"
+  environment:
+    ES_HEAP_SIZE: "16g" 
+
+# Short term data nodes on SSD storage
+elasticsearch-datanodes-1:
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elasticsearch-base-datanode-1,elasticsearch-datavolume-datanode-1
+    io.rancher.scheduler.affinity:host_label: es_data=true
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+  links:
+    - elasticsearch-masters:es-masters
+  volumes_from:
+    - elasticsearch-datavolume-datanode-1
+elasticsearch-datavolume-datanode-1:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    #- /disks/ssde/elasticsearch_data:/data0
+    - /disks/ssdf/elasticsearch_data:/data0
+    - /elasticsearch/config1:/usr/share/elasticsearch/config
+    - /elasticsearch/config1/scripts:/usr/share/elasticsearch/config/scripts
+    - /opt/rancher/bin
+  entrypoint: /bin/true
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+elasticsearch-base-datanode-1:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+  links:
+    - elasticsearch-masters:es-masters
+  entrypoint:
+    - /opt/rancher/bin/run.sh
+  volumes_from:
+    - elasticsearch-datavolume-datanode-1
+  net: "container:elasticsearch-datanodes-1"
+  environment:
+    ES_HEAP_SIZE: "16g" 
+
+# Long term (lt) data nodes on HD storage
+elasticsearch-datanodes-lt0:
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elasticsearch-base-datanode-lt0,elasticsearch-datavolume-datanode-lt0
+    io.rancher.scheduler.affinity:host_label: es_data=true
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+  links:
+    - elasticsearch-masters:es-masters
+  volumes_from:
+    - elasticsearch-datavolume-datanode-lt0
+elasticsearch-datavolume-datanode-lt0:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - /disks/sdd/elasticsearch_data:/data0
+    - /disks/sdc/elasticsearch_data:/data1
+    #- /disks/sdb10/elasticsearch_data:/data2
+    #- /disks/sda10/elasticsearch_data:/data3
+    - /elasticsearch/config_lt0:/usr/share/elasticsearch/config
+    - /elasticsearch/config_lt0/scripts:/usr/share/elasticsearch/config/scripts
+    - /opt/rancher/bin
+  entrypoint: /bin/true
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+elasticsearch-base-datanode-lt0:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+  links:
+    - elasticsearch-masters:es-masters
+  entrypoint:
+    - /opt/rancher/bin/run.sh
+  volumes_from:
+    - elasticsearch-datavolume-datanode-lt0
+  net: "container:elasticsearch-datanodes-lt0"
+  environment:
+    ES_HEAP_SIZE: "16g" 
+
+
+# Long term (lt) data nodes on HD storage
+elasticsearch-datanodes-lt1:
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elasticsearch-base-datanode-lt1,elasticsearch-datavolume-datanode-lt1
+    io.rancher.scheduler.affinity:host_label: es_data=true
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+  links:
+    - elasticsearch-masters:es-masters
+  volumes_from:
+    - elasticsearch-datavolume-datanode-lt1
+elasticsearch-datavolume-datanode-lt1:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    #- /disks/sdd/elasticsearch_data:/data0
+    #- /disks/sdc/elasticsearch_data:/data1
+    - /disks/sdb10/elasticsearch_data:/data0
+    - /disks/sda10/elasticsearch_data:/data1
+    - /elasticsearch/config_lt1:/usr/share/elasticsearch/config
+    - /elasticsearch/config_lt1/scripts:/usr/share/elasticsearch/config/scripts
+    - /opt/rancher/bin
+  entrypoint: /bin/true
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+elasticsearch-base-datanode-lt1:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+  links:
+    - elasticsearch-masters:es-masters
+  entrypoint:
+    - /opt/rancher/bin/run.sh
+  volumes_from:
+    - elasticsearch-datavolume-datanode-lt1
+  net: "container:elasticsearch-datanodes-lt1"
+  environment:
+    ES_HEAP_SIZE: "16g" 
+
+
+elasticsearch-query-clients:
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elasticsearch-base-query-clients,elasticsearch-datavolume-query-clients
+    io.rancher.scheduler.affinity:host_label: es_query_client=true
+  links:
+    - elasticsearch-masters:es-masters
+  volumes_from:
+    - elasticsearch-datavolume-query-clients
+  ports:
+    - "9200:9200"
+elasticsearch-datavolume-query-clients:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - /usr/share/elasticsearch/data
+    - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
+    - /opt/rancher/bin
+  entrypoint: /bin/true
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+elasticsearch-base-query-clients:
+  labels:
+    elasticsearch.client.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+  volumes_from:
+    - elasticsearch-datavolume-query-clients
+  net: "container:elasticsearch-query-clients"
+  environment:
+    ES_HEAP_SIZE: "4g" 
+  entrypoint:
+    - /opt/rancher/bin/run.sh
+
+elasticsearch-index-clients:
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: elasticsearch-base-index-clients,elasticsearch-datavolume-index-clients
+    io.rancher.scheduler.affinity:host_label: es_index_client=true
+  links:
+    - elasticsearch-masters:es-masters
+  volumes_from:
+    - elasticsearch-datavolume-index-clients
+  ports:
+    - "9200:9200"
+elasticsearch-datavolume-index-clients:
+  labels:
+    elasticsearch.datanode.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - /usr/share/elasticsearch/data
+    - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
+    - /opt/rancher/bin
+  entrypoint: /bin/true
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+elasticsearch-base-index-clients:
+  labels:
+    elasticsearch.client.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+  volumes_from:
+    - elasticsearch-datavolume-index-clients
+  net: "container:elasticsearch-index-clients"
+  environment:
+    ES_HEAP_SIZE: "2g" 
+  entrypoint:
+    - /opt/rancher/bin/run.sh
+
+
+kopf:
+  image: rancher/kopf:v0.4.0
+  ports:
+    - "${kopf_port}:80"
+  environment:
+    KOPF_SERVER_NAME: 'es.dev'
+    KOPF_ES_SERVERS: 'es-clients:9200'
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.scheduler.affinity:host_label: es_kopf=true
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+  links:
+    - elasticsearch-query-clients:es-clients
+
