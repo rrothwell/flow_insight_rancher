@@ -1,5 +1,5 @@
 ---
-name: FlowInsight Kibana 5
+name: FlowInsight-Kibana-5
 description: >
   FlowInsight: Explore & Visualize IPFIX Stream Data with Kibana 5.
 version: 0.0.1-rancher1
