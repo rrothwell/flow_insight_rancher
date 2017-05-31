@@ -23,6 +23,7 @@ elasticsearch-masters:
         node.name: "$${HOSTNAME}"
         node.data: "false"
         node.master: "true"
+        node.ingest: "false"
         network.host: "_site_"
         script.engine.groovy.inline.aggs: on
 # Short term data nodes on SSD storage
@@ -34,6 +35,7 @@ elasticsearch-datanodes-0:
         node.name: "$${HOSTNAME}"
         node.data: "true"
         node.master: "false"
+        node.ingest: "false"
         http.enabled: "false"
         network.host: "_site_"
         #path.data: "/data0,/data1"
@@ -53,6 +55,7 @@ elasticsearch-datanodes-1:
         node.name: "$${HOSTNAME}"
         node.data: "true"
         node.master: "false"
+        node.ingest: "false"
         http.enabled: "false"
         network.host: "_site_"
         #path.data: "/data0,/data1"
@@ -72,6 +75,7 @@ elasticsearch-datanodes-lt0:
         node.name: "$${HOSTNAME}.lt0"
         node.data: "true"
         node.master: "false"
+        node.ingest: "false"
         http.enabled: "false"
         network.host: "_site_"
         #path.data: "/data0,/data1,/data2,/data3"
@@ -91,6 +95,7 @@ elasticsearch-datanodes-lt1:
         node.name: "$${HOSTNAME}.lt1"
         node.data: "true"
         node.master: "false"
+        node.ingest: "false"
         http.enabled: "false"
         network.host: "_site_"
         #path.data: "/data0,/data1,/data2,/data3"
@@ -109,6 +114,7 @@ elasticsearch-query-clients:
         node.name: "$${HOSTNAME}"
         node.data: "false"
         node.master: "false"
+        node.ingest: "false"
         network.host: "_site_"
         script.engine.groovy.inline.aggs: on
 elasticsearch-index-clients:
@@ -119,5 +125,6 @@ elasticsearch-index-clients:
         node.name: "$${HOSTNAME}"
         node.data: "false"
         node.master: "false"
+        node.ingest: "true"
         network.host: "_site_"
         script.engine.groovy.inline.aggs: on
