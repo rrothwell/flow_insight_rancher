@@ -30,11 +30,11 @@ elasticsearch-base-master:
     - elasticsearch-datavolume-masters
   environment:
     ES_HEAP_SIZE: "2g" 
+  mem_limit: "4g"
   ulimits:
     memlock:
       soft: -1
       hard: -1
-    mem_limit: 4g
     nofile:
         soft: 65536
         hard: 65536
@@ -80,7 +80,7 @@ elasticsearch-base-datanode-0:
   net: "container:elasticsearch-datanodes-0"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: 64g
+  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -128,7 +128,7 @@ elasticsearch-base-datanode-1:
   net: "container:elasticsearch-datanodes-1"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: 64g
+  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -178,7 +178,7 @@ elasticsearch-base-datanode-lt0:
   net: "container:elasticsearch-datanodes-lt0"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: 64g
+  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -229,7 +229,7 @@ elasticsearch-base-datanode-lt1:
   net: "container:elasticsearch-datanodes-lt1"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: 64g
+  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -275,7 +275,7 @@ elasticsearch-base-query-clients:
     ES_HEAP_SIZE: "4g" 
   entrypoint:
     - /opt/rancher/bin/run.sh
-  mem_limit: 64g
+  mem_limit: "8g"
   ulimits:
     memlock:
       soft: -1
@@ -320,7 +320,7 @@ elasticsearch-base-index-clients:
     ES_HEAP_SIZE: "2g" 
   entrypoint:
     - /opt/rancher/bin/run.sh
-  mem_limit: 64g
+  mem_limit: "4g"
   ulimits:
     memlock:
       soft: -1
