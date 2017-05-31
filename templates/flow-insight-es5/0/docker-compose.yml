@@ -25,12 +25,12 @@ elasticsearch-base-master:
     elasticsearch.master.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  mem_limit: "4g"
   net: "container:elasticsearch-masters"
   volumes_from:
     - elasticsearch-datavolume-masters
   environment:
     ES_HEAP_SIZE: "2g" 
-  mem_limit: "4g"
   ulimits:
     memlock:
       soft: -1
@@ -71,6 +71,7 @@ elasticsearch-base-datanode-0:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  mem_limit: "64g"
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -80,7 +81,6 @@ elasticsearch-base-datanode-0:
   net: "container:elasticsearch-datanodes-0"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -119,6 +119,7 @@ elasticsearch-base-datanode-1:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  mem_limit: "64g"
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -128,7 +129,6 @@ elasticsearch-base-datanode-1:
   net: "container:elasticsearch-datanodes-1"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -169,6 +169,7 @@ elasticsearch-base-datanode-lt0:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  mem_limit: "64g"
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -178,7 +179,6 @@ elasticsearch-base-datanode-lt0:
   net: "container:elasticsearch-datanodes-lt0"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -220,6 +220,7 @@ elasticsearch-base-datanode-lt1:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  mem_limit: "64g"
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -229,7 +230,6 @@ elasticsearch-base-datanode-lt1:
   net: "container:elasticsearch-datanodes-lt1"
   environment:
     ES_HEAP_SIZE: "16g" 
-  mem_limit: "64g"
   ulimits:
     memlock:
       soft: -1
@@ -268,6 +268,7 @@ elasticsearch-base-query-clients:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  mem_limit: "8g"
   volumes_from:
     - elasticsearch-datavolume-query-clients
   net: "container:elasticsearch-query-clients"
@@ -275,7 +276,6 @@ elasticsearch-base-query-clients:
     ES_HEAP_SIZE: "4g" 
   entrypoint:
     - /opt/rancher/bin/run.sh
-  mem_limit: "8g"
   ulimits:
     memlock:
       soft: -1
@@ -313,6 +313,7 @@ elasticsearch-base-index-clients:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  mem_limit: "4g"
   volumes_from:
     - elasticsearch-datavolume-index-clients
   net: "container:elasticsearch-index-clients"
@@ -320,7 +321,6 @@ elasticsearch-base-index-clients:
     ES_HEAP_SIZE: "2g" 
   entrypoint:
     - /opt/rancher/bin/run.sh
-  mem_limit: "4g"
   ulimits:
     memlock:
       soft: -1
