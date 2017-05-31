@@ -14,4 +14,4 @@ if [ -f "$PLUGIN_TXT" ]; then
     done
 fi
 
-exec /docker-entrypoint.sh elasticsearch
+exec /usr/share/elasticsearch/bin/es-docker
