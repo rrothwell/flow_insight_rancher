@@ -1,0 +1,64 @@
+kibana-vip:
+  ports:
+  - "${public_port}:80"
+  restart: always
+  tty: true
+  stdin_open: true
+  image: rancher/load-balancer-service
+  links:
+  - nginx-proxy:flowinsight-kibana5-base
+  labels:
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: es_kibana=true
+  
+nginx-proxy-conf:
+  image: registry.aarnet.net.au/insight/nginx-conf
+  command: "-backend=rancher --prefix=/2015-07-25"
+  labels:
+    io.rancher.container.hostname_override: container_name
+    
+nginx-proxy:
+  image: rancher/nginx:v1.9.4-3
+  volumes_from:
+    - nginx-proxy-conf
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: nginx-proxy-conf,flowinsight-kibana5,flowinsight-kibana5-datavolume,flowinsight-kibana5-base
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.scheduler.affinity:host_label: es_kibana=true
+  external_links:
+    - ${elasticsearch_source}:elasticsearch
+
+flowinsight-kibana5:
+  image: registry.aarnet.net.au/insight/kibana5-conf:latest
+  labels:
+    io.rancher.container.hostname_override: container_name
+  volumes_from:
+     - flowinsight-kibana5-datavolume
+
+flowinsight-kibana5-datavolume:
+  image: docker.elastic.co/kibana/kibana:5.4.0
+  labels:
+    flowinsight.kibana5.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - "/usr/local/bin"
+    - "/opt/kibana/config"
+  entrypoint: /bin/true    
+    
+flowinsight-kibana5-base:
+  restart: always
+  tty: true
+  stdin_open: true
+  image: docker.elastic.co/kibana/kibana:5.4.0
+  net: "container:nginx-proxy"
+  environment:
+    ELASTICSEARCH_URL: "${elasticsearch_url}"
+  labels:
+    flowinsight.kibana5.config.version: '0'
+    io.rancher.container.hostname_override: container_name
+  entrypoint:
+    - /usr/local/bin/run.sh
+  volumes_from:
+    - flowinsight-kibana5-datavolume
