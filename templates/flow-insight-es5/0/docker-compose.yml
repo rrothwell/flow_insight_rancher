@@ -25,7 +25,7 @@ elasticsearch-base-master:
     elasticsearch.master.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: "4g"
+  mem_limit: 4000000000
   net: "container:elasticsearch-masters"
   volumes_from:
     - elasticsearch-datavolume-masters
@@ -71,7 +71,7 @@ elasticsearch-base-datanode-0:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: "64g"
+  mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -119,7 +119,7 @@ elasticsearch-base-datanode-1:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: "64g"
+  mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -169,7 +169,7 @@ elasticsearch-base-datanode-lt0:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: "64g"
+  mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -220,7 +220,7 @@ elasticsearch-base-datanode-lt1:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: "64g"
+  mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
   entrypoint:
@@ -268,7 +268,7 @@ elasticsearch-base-query-clients:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: "8g"
+  mem_limit: 8000000000
   volumes_from:
     - elasticsearch-datavolume-query-clients
   net: "container:elasticsearch-query-clients"
@@ -313,7 +313,7 @@ elasticsearch-base-index-clients:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: "4g"
+  mem_limit: 4000000000
   volumes_from:
     - elasticsearch-datavolume-index-clients
   net: "container:elasticsearch-index-clients"
