@@ -3,6 +3,8 @@
 {{.}}: {{getv (printf "/self/service/metadata/elasticsearch/yml/%s" .)}}{{end}}
 
 discovery.zen.minimum_master_nodes: 3
+
+# Disbabled since it conflicts with the value set in rancher-compose.yml
 # network.host: 0.0.0.0
 
 bootstrap.mlockall: true
