@@ -1,5 +1,5 @@
 elasticsearch-masters:
-  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-master,elasticsearch-datavolume-masters
@@ -43,7 +43,7 @@ elasticsearch-base-master:
 
 # Short term data nodes on SSD storage
 elasticsearch-datanodes-0:
-  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode-0,elasticsearch-datavolume-datanode-0
@@ -91,7 +91,7 @@ elasticsearch-base-datanode-0:
 
 # Short term data nodes on SSD storage
 elasticsearch-datanodes-1:
-  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode-1,elasticsearch-datavolume-datanode-1
@@ -139,7 +139,7 @@ elasticsearch-base-datanode-1:
 
 # Long term (lt) data nodes on HD storage
 elasticsearch-datanodes-lt0:
-  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode-lt0,elasticsearch-datavolume-datanode-lt0
@@ -190,7 +190,7 @@ elasticsearch-base-datanode-lt0:
 
 # Long term (lt) data nodes on HD storage
 elasticsearch-datanodes-lt1:
-  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode-lt1,elasticsearch-datavolume-datanode-lt1
@@ -240,7 +240,7 @@ elasticsearch-base-datanode-lt1:
 
 
 elasticsearch-query-clients:
-  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-query-clients,elasticsearch-datavolume-query-clients
@@ -285,7 +285,7 @@ elasticsearch-base-query-clients:
         hard: 65536
 
 elasticsearch-index-clients:
-  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-index-clients,elasticsearch-datavolume-index-clients
