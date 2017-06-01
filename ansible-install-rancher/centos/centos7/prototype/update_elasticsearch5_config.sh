@@ -41,11 +41,10 @@ new_gid="5000"
 # Assumes if the user is present the group can also be modified.
 # This might be bad if other users belong to the same group and are expecting the gid to be fixed.
 if id "$new_user" >/dev/null 2>&1; then
-    /usr/sbin/usermod -u $new_uid $new_user
-    /usr/sbin/groupmod -g $new_gid $new_group
+    /usr/sbin/groupmod -g $new_gid $new_group && /usr/sbin/usermod -u $new_uid $new_user
 else
-    /usr/sbin/groupadd -g $new_gid $new_user
-    /usr/sbin/useradd -g $new_gid -u $new_uid -M  $new_user
+	# -d /elasticsearch if using this as a home directory.
+    /usr/sbin/groupadd -g $new_gid $new_user && /usr/sbin/useradd -g $new_gid -u $new_uid -M  $new_user 
 fi
 
 chown -R "$new_user:$new_group" /elasticsearch
