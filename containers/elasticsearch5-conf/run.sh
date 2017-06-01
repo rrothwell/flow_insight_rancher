@@ -17,7 +17,9 @@ fi
 # Report which user we are.
 users
 
-sleep 20
+while 1 ; do
+    sleep 1
+done
 
 #chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 su elasticsearch
