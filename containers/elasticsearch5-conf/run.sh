@@ -14,6 +14,9 @@ if [ -f "$PLUGIN_TXT" ]; then
     done
 fi
 
-chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
+# Report which user we are.
+users
+
+#chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 su elasticsearch
 exec /usr/share/elasticsearch/bin/es-docker
