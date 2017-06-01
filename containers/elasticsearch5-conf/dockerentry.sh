@@ -37,5 +37,4 @@ while [ ! -d "/usr/share/elasticsearch/config/" ]; do
 done
 echo "Found /usr/share/elasticsearch/config/"
 
-su elasticsearch
 exec /confd $@
