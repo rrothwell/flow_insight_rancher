@@ -17,6 +17,8 @@ fi
 # Report which user we are.
 users
 
+sleep 20
+
 #chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 su elasticsearch
 exec /usr/share/elasticsearch/bin/es-docker
