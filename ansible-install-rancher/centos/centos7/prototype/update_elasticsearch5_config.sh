@@ -2,7 +2,7 @@
 
 # Upgrade form ElasticSearch 4 to ElasticSearch 5
 
-# Usage: ansible elasticsearch  -b -K -m script -a ""/Users/developer/git/flow_insight_rancher/ansible-install-rancher/centos/centos7/prototype/update_elasticsearch5_config.sh"
+# Usage: ansible elasticsearch  -b -K -m script -a "/Users/developer/git/flow_insight_rancher/ansible-install-rancher/centos/centos7/prototype/update_elasticsearch5_config.sh"
 
 # ElasticSearch logging configuration
 # Mount to docker container using -v "$PWD/config":/usr/share/elasticsearch/config
@@ -52,4 +52,4 @@ chown -R "$new_user:$new_group" /elasticsearch
 # https://muffinresearch.co.uk/linux-changing-uids-and-gids-for-user/
 find / \( -name proc -o -name dev -o -name sys \) -prune -o \( -user $old_uid -exec chown -hv $new_uid {} + -o -group $old_gid -exec chgrp -hv $new_gid {} + \)
 
-sysctl -w vm.max_map_count=262144
+/usr/sbin/sysctl -w vm.max_map_count=262144
