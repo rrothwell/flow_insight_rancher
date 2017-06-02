@@ -44,14 +44,13 @@ elasticsearch-base-master:
         -Dfile.encoding=UTF-8
         -Djna.nosys=true
         -Djdk.io.permissionsUseCanonicalPath=true
--Dio.netty.noUnsafe=true
--Dio.netty.noKeySetOptimization=true
--Dio.netty.recycler.maxCapacityPerThread=0
--Dlog4j.shutdownHookEnabled=false
--Dlog4j2.disable.jmx=true
--Dlog4j.skipJansi=true
--XX:+HeapDumpOnOutOfMemoryError
-        
+        -Dio.netty.noUnsafe=true
+        -Dio.netty.noKeySetOptimization=true
+        -Dio.netty.recycler.maxCapacityPerThread=0
+        -Dlog4j.shutdownHookEnabled=false
+        -Dlog4j2.disable.jmx=true
+        -Dlog4j.skipJansi=true
+        -XX:+HeapDumpOnOutOfMemoryError        
   ulimits:
     memlock:
       soft: -1
@@ -114,6 +113,13 @@ elasticsearch-base-datanode-0:
         -Dfile.encoding=UTF-8
         -Djna.nosys=true
         -Djdk.io.permissionsUseCanonicalPath=true
+        -Dio.netty.noUnsafe=true
+        -Dio.netty.noKeySetOptimization=true
+        -Dio.netty.recycler.maxCapacityPerThread=0
+        -Dlog4j.shutdownHookEnabled=false
+        -Dlog4j2.disable.jmx=true
+        -Dlog4j.skipJansi=true
+        -XX:+HeapDumpOnOutOfMemoryError
   ulimits:
     memlock:
       soft: -1
@@ -175,6 +181,13 @@ elasticsearch-base-datanode-1:
         -Dfile.encoding=UTF-8
         -Djna.nosys=true
         -Djdk.io.permissionsUseCanonicalPath=true
+        -Dio.netty.noUnsafe=true
+        -Dio.netty.noKeySetOptimization=true
+        -Dio.netty.recycler.maxCapacityPerThread=0
+        -Dlog4j.shutdownHookEnabled=false
+        -Dlog4j2.disable.jmx=true
+        -Dlog4j.skipJansi=true
+        -XX:+HeapDumpOnOutOfMemoryError
   ulimits:
     memlock:
       soft: -1
@@ -238,6 +251,13 @@ elasticsearch-base-datanode-lt0:
         -Dfile.encoding=UTF-8
         -Djna.nosys=true
         -Djdk.io.permissionsUseCanonicalPath=true
+        -Dio.netty.noUnsafe=true
+        -Dio.netty.noKeySetOptimization=true
+        -Dio.netty.recycler.maxCapacityPerThread=0
+        -Dlog4j.shutdownHookEnabled=false
+        -Dlog4j2.disable.jmx=true
+        -Dlog4j.skipJansi=true
+        -XX:+HeapDumpOnOutOfMemoryError
   ulimits:
     memlock:
       soft: -1
@@ -302,6 +322,13 @@ elasticsearch-base-datanode-lt1:
         -Dfile.encoding=UTF-8
         -Djna.nosys=true
         -Djdk.io.permissionsUseCanonicalPath=true
+        -Dio.netty.noUnsafe=true
+        -Dio.netty.noKeySetOptimization=true
+        -Dio.netty.recycler.maxCapacityPerThread=0
+        -Dlog4j.shutdownHookEnabled=false
+        -Dlog4j2.disable.jmx=true
+        -Dlog4j.skipJansi=true
+        -XX:+HeapDumpOnOutOfMemoryError
   ulimits:
     memlock:
       soft: -1
@@ -359,6 +386,13 @@ elasticsearch-base-query-clients:
         -Dfile.encoding=UTF-8
         -Djna.nosys=true
         -Djdk.io.permissionsUseCanonicalPath=true
+        -Dio.netty.noUnsafe=true
+        -Dio.netty.noKeySetOptimization=true
+        -Dio.netty.recycler.maxCapacityPerThread=0
+        -Dlog4j.shutdownHookEnabled=false
+        -Dlog4j2.disable.jmx=true
+        -Dlog4j.skipJansi=true
+        -XX:+HeapDumpOnOutOfMemoryError
   entrypoint:
     - /opt/rancher/bin/run.sh
   ulimits:
@@ -417,6 +451,13 @@ elasticsearch-base-index-clients:
         -Dfile.encoding=UTF-8
         -Djna.nosys=true
         -Djdk.io.permissionsUseCanonicalPath=true
+        -Dio.netty.noUnsafe=true
+        -Dio.netty.noKeySetOptimization=true
+        -Dio.netty.recycler.maxCapacityPerThread=0
+        -Dlog4j.shutdownHookEnabled=false
+        -Dlog4j2.disable.jmx=true
+        -Dlog4j.skipJansi=true
+        -XX:+HeapDumpOnOutOfMemoryError
   entrypoint:
     - /opt/rancher/bin/run.sh
   ulimits:
