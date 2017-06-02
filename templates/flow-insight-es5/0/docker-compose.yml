@@ -31,7 +31,27 @@ elasticsearch-base-master:
   volumes_from:
     - elasticsearch-datavolume-masters
   environment:
-    ES_JAVA_OPTS: "-Xms2g -Xmx2g"
+    ES_JAVA_OPTS: >
+        -Xms2g -Xmx2g
+        -XX:+UseConcMarkSweepGC 
+        -XX:CMSInitiatingOccupancyFraction=75 
+        -XX:+UseCMSInitiatingOccupancyOnly
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -server
+        -Xss1m
+        -Djava.awt.headless=true
+        -Dfile.encoding=UTF-8
+        -Djna.nosys=true
+        -Djdk.io.permissionsUseCanonicalPath=true
+-Dio.netty.noUnsafe=true
+-Dio.netty.noKeySetOptimization=true
+-Dio.netty.recycler.maxCapacityPerThread=0
+-Dlog4j.shutdownHookEnabled=false
+-Dlog4j2.disable.jmx=true
+-Dlog4j.skipJansi=true
+-XX:+HeapDumpOnOutOfMemoryError
+        
   ulimits:
     memlock:
       soft: -1
@@ -81,8 +101,19 @@ elasticsearch-base-datanode-0:
   volumes_from:
     - elasticsearch-datavolume-datanode-0
   net: "container:elasticsearch-datanodes-0"
-  environment:
-    ES_JAVA_OPTS: "-Xms16g -Xmx16g"
+    ES_JAVA_OPTS: >
+        -Xms16g -Xmx16g
+        -XX:+UseConcMarkSweepGC 
+        -XX:CMSInitiatingOccupancyFraction=75 
+        -XX:+UseCMSInitiatingOccupancyOnly
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -server
+        -Xss1m
+        -Djava.awt.headless=true
+        -Dfile.encoding=UTF-8
+        -Djna.nosys=true
+        -Djdk.io.permissionsUseCanonicalPath=true
   ulimits:
     memlock:
       soft: -1
@@ -131,7 +162,19 @@ elasticsearch-base-datanode-1:
     - elasticsearch-datavolume-datanode-1
   net: "container:elasticsearch-datanodes-1"
   environment:
-    ES_JAVA_OPTS: "-Xms16g -Xmx16g"
+    ES_JAVA_OPTS: >
+        -Xms16g -Xmx16g
+        -XX:+UseConcMarkSweepGC 
+        -XX:CMSInitiatingOccupancyFraction=75 
+        -XX:+UseCMSInitiatingOccupancyOnly
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -server
+        -Xss1m
+        -Djava.awt.headless=true
+        -Dfile.encoding=UTF-8
+        -Djna.nosys=true
+        -Djdk.io.permissionsUseCanonicalPath=true
   ulimits:
     memlock:
       soft: -1
@@ -182,7 +225,19 @@ elasticsearch-base-datanode-lt0:
     - elasticsearch-datavolume-datanode-lt0
   net: "container:elasticsearch-datanodes-lt0"
   environment:
-    ES_JAVA_OPTS: "-Xms16g -Xmx16g"
+    ES_JAVA_OPTS: >
+        -Xms16g -Xmx16g
+        -XX:+UseConcMarkSweepGC 
+        -XX:CMSInitiatingOccupancyFraction=75 
+        -XX:+UseCMSInitiatingOccupancyOnly
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -server
+        -Xss1m
+        -Djava.awt.headless=true
+        -Dfile.encoding=UTF-8
+        -Djna.nosys=true
+        -Djdk.io.permissionsUseCanonicalPath=true
   ulimits:
     memlock:
       soft: -1
@@ -234,7 +289,19 @@ elasticsearch-base-datanode-lt1:
     - elasticsearch-datavolume-datanode-lt1
   net: "container:elasticsearch-datanodes-lt1"
   environment:
-    ES_JAVA_OPTS: "-Xms16g -Xmx16g"
+    ES_JAVA_OPTS: >
+        -Xms16g -Xmx16g
+        -XX:+UseConcMarkSweepGC 
+        -XX:CMSInitiatingOccupancyFraction=75 
+        -XX:+UseCMSInitiatingOccupancyOnly
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -server
+        -Xss1m
+        -Djava.awt.headless=true
+        -Dfile.encoding=UTF-8
+        -Djna.nosys=true
+        -Djdk.io.permissionsUseCanonicalPath=true
   ulimits:
     memlock:
       soft: -1
@@ -279,7 +346,19 @@ elasticsearch-base-query-clients:
     - elasticsearch-datavolume-query-clients
   net: "container:elasticsearch-query-clients"
   environment:
-    ES_JAVA_OPTS: "-Xms4g -Xmx4g"
+    ES_JAVA_OPTS: > 
+        -Xms4g -Xmx4g
+        -XX:+UseConcMarkSweepGC 
+        -XX:CMSInitiatingOccupancyFraction=75 
+        -XX:+UseCMSInitiatingOccupancyOnly
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -server
+        -Xss1m
+        -Djava.awt.headless=true
+        -Dfile.encoding=UTF-8
+        -Djna.nosys=true
+        -Djdk.io.permissionsUseCanonicalPath=true
   entrypoint:
     - /opt/rancher/bin/run.sh
   ulimits:
@@ -325,7 +404,19 @@ elasticsearch-base-index-clients:
     - elasticsearch-datavolume-index-clients
   net: "container:elasticsearch-index-clients"
   environment:
-    ES_JAVA_OPTS: "-Xms2g -Xmx2g"
+    ES_JAVA_OPTS: >
+        -Xms2g -Xmx2g
+        -XX:+UseConcMarkSweepGC 
+        -XX:CMSInitiatingOccupancyFraction=75 
+        -XX:+UseCMSInitiatingOccupancyOnly
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -server
+        -Xss1m
+        -Djava.awt.headless=true
+        -Dfile.encoding=UTF-8
+        -Djna.nosys=true
+        -Djdk.io.permissionsUseCanonicalPath=true
   entrypoint:
     - /opt/rancher/bin/run.sh
   ulimits:
