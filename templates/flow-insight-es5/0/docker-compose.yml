@@ -31,8 +31,8 @@ elasticsearch-base-master:
   volumes_from:
     - elasticsearch-datavolume-masters
   environment:
-    ES_JAVA_OPTS: >
-        -Xms2g -Xmx2g
+    ES_JAVA_OPTS: "\
+        -Xms2g -Xmx2g"
   ulimits:
     memlock:
       soft: -1
@@ -83,8 +83,8 @@ elasticsearch-base-datanode-0:
     - elasticsearch-datavolume-datanode-0
   net: "container:elasticsearch-datanodes-0"
   environment:
-    ES_JAVA_OPTS: >
-        -Xms16g -Xmx16g
+    ES_JAVA_OPTS: "\
+        -Xms16g -Xmx16g"
   ulimits:
     memlock:
       soft: -1
@@ -133,8 +133,8 @@ elasticsearch-base-datanode-1:
     - elasticsearch-datavolume-datanode-1
   net: "container:elasticsearch-datanodes-1"
   environment:
-    ES_JAVA_OPTS: >
-        -Xms16g -Xmx16g
+    ES_JAVA_OPTS: "\
+        -Xms16g -Xmx16g"
   ulimits:
     memlock:
       soft: -1
@@ -185,8 +185,8 @@ elasticsearch-base-datanode-lt0:
     - elasticsearch-datavolume-datanode-lt0
   net: "container:elasticsearch-datanodes-lt0"
   environment:
-    ES_JAVA_OPTS: >
-        -Xms16g -Xmx16g
+    ES_JAVA_OPTS: "\
+        -Xms16g -Xmx16g"
   ulimits:
     memlock:
       soft: -1
@@ -238,8 +238,8 @@ elasticsearch-base-datanode-lt1:
     - elasticsearch-datavolume-datanode-lt1
   net: "container:elasticsearch-datanodes-lt1"
   environment:
-    ES_JAVA_OPTS: >
-        -Xms16g -Xmx16g
+    ES_JAVA_OPTS: "\
+        -Xms16g -Xmx16g"
   ulimits:
     memlock:
       soft: -1
@@ -284,8 +284,8 @@ elasticsearch-base-query-clients:
     - elasticsearch-datavolume-query-clients
   net: "container:elasticsearch-query-clients"
   environment:
-    ES_JAVA_OPTS: > 
-        -Xms4g -Xmx4g
+    ES_JAVA_OPTS: "\
+        -Xms4g -Xmx4g"
   entrypoint:
     - /opt/rancher/bin/run.sh
   ulimits:
@@ -331,8 +331,8 @@ elasticsearch-base-index-clients:
     - elasticsearch-datavolume-index-clients
   net: "container:elasticsearch-index-clients"
   environment:
-    ES_JAVA_OPTS: >
-        -Xms2g -Xmx2g
+    ES_JAVA_OPTS: "\
+        -Xms2g -Xmx2g"
   entrypoint:
     - /opt/rancher/bin/run.sh
   ulimits:
