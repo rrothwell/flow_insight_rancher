@@ -1,4 +1,3 @@
-version: '2.1'
 elasticsearch-masters:
   image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.19
   labels:
