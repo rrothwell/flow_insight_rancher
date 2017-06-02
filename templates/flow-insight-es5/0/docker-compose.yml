@@ -17,6 +17,7 @@ elasticsearch-datavolume-masters:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
     - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
+    - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
@@ -63,6 +64,7 @@ elasticsearch-datavolume-datanode-0:
     #- /disks/ssdf/elasticsearch_data:/data1
     - /elasticsearch/config0:/usr/share/elasticsearch/config
     - /elasticsearch/config0/scripts:/usr/share/elasticsearch/config/scripts
+    - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
@@ -111,6 +113,7 @@ elasticsearch-datavolume-datanode-1:
     - /disks/ssdf/elasticsearch_data:/data0
     - /elasticsearch/config1:/usr/share/elasticsearch/config
     - /elasticsearch/config1/scripts:/usr/share/elasticsearch/config/scripts
+    - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
@@ -161,6 +164,7 @@ elasticsearch-datavolume-datanode-lt0:
     #- /disks/sda10/elasticsearch_data:/data3
     - /elasticsearch/config_lt0:/usr/share/elasticsearch/config
     - /elasticsearch/config_lt0/scripts:/usr/share/elasticsearch/config/scripts
+    - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
@@ -212,6 +216,7 @@ elasticsearch-datavolume-datanode-lt1:
     - /disks/sda10/elasticsearch_data:/data1
     - /elasticsearch/config_lt1:/usr/share/elasticsearch/config
     - /elasticsearch/config_lt1/scripts:/usr/share/elasticsearch/config/scripts
+    - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
@@ -260,6 +265,7 @@ elasticsearch-datavolume-query-clients:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
     - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
+    - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
@@ -305,6 +311,7 @@ elasticsearch-datavolume-index-clients:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
     - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
+    - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
