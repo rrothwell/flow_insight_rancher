@@ -51,3 +51,5 @@ chown -R "$new_user:$new_group" /elasticsearch
 
 # https://muffinresearch.co.uk/linux-changing-uids-and-gids-for-user/
 find / \( -name proc -o -name dev -o -name sys \) -prune -o \( -user $old_uid -exec chown -hv $new_uid {} + -o -group $old_gid -exec chgrp -hv $new_gid {} + \)
+
+sysctl -w vm.max_map_count=262144

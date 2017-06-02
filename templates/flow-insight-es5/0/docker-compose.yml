@@ -39,6 +39,11 @@ elasticsearch-base-master:
     nofile:
         soft: 65536
         hard: 65536
+    nproc:
+      soft: 2048
+      hard: 2048
+  sysctls:
+        vm.max_map_count: 262144
   entrypoint:
     - /opt/rancher/bin/run.sh
 
@@ -90,6 +95,11 @@ elasticsearch-base-datanode-0:
     nofile:
         soft: 65536
         hard: 65536
+    nproc:
+      soft: 2048
+      hard: 2048
+  sysctls:
+        vm.max_map_count: 262144
 
 # Short term data nodes on SSD storage
 elasticsearch-datanodes-1:
@@ -139,6 +149,11 @@ elasticsearch-base-datanode-1:
     nofile:
         soft: 65536
         hard: 65536
+    nproc:
+      soft: 2048
+      hard: 2048
+  sysctls:
+        vm.max_map_count: 262144
 
 # Long term (lt) data nodes on HD storage
 elasticsearch-datanodes-lt0:
@@ -190,6 +205,11 @@ elasticsearch-base-datanode-lt0:
     nofile:
         soft: 65536
         hard: 65536
+    nproc:
+      soft: 2048
+      hard: 2048
+  sysctls:
+        vm.max_map_count: 262144
 
 
 # Long term (lt) data nodes on HD storage
@@ -242,6 +262,11 @@ elasticsearch-base-datanode-lt1:
     nofile:
         soft: 65536
         hard: 65536
+    nproc:
+      soft: 2048
+      hard: 2048
+  sysctls:
+        vm.max_map_count: 262144
 
 
 elasticsearch-query-clients:
@@ -289,6 +314,11 @@ elasticsearch-base-query-clients:
     nofile:
         soft: 65536
         hard: 65536
+    nproc:
+      soft: 2048
+      hard: 2048
+  sysctls:
+        vm.max_map_count: 262144
 
 elasticsearch-index-clients:
   image: registry.aarnet.net.au/insight/elasticsearch5-conf:1.0.19
@@ -335,6 +365,11 @@ elasticsearch-base-index-clients:
     nofile:
         soft: 65536
         hard: 65536
+    nproc:
+      soft: 2048
+      hard: 2048
+  sysctls:
+        vm.max_map_count: 262144
 
 
 kopf:
