@@ -12,6 +12,8 @@ VOLUME /data/confd
 VOLUME /opt/rancher/bin
 VOLUME /usr/share/elasticsearch/config
 
+ADD ./jvm.options /usr/share/elasticsearch/config/jvm.options
+
 # Busybox specific stuff.
 # No home directory, no password.
 RUN addgroup -g 5000 elasticsearch && adduser -H -D -u 5000 -G elasticsearch elasticsearch
