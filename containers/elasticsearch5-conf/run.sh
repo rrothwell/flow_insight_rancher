@@ -15,14 +15,6 @@ if [ -f "$PLUGIN_TXT" ]; then
 fi
 
 # Report which user we are.
-who
+echo -n "User running this script: " ; whoami
 
-while true ; do
-    whoami
-    echo "Waiting 1 second. "
-    sleep 1
-done
-
-#chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
-su elasticsearch
 exec /usr/share/elasticsearch/bin/es-docker
