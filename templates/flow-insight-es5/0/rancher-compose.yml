@@ -8,7 +8,7 @@
       label: "Cluster Name"
       type: "string"
       required: true
-      default: "flowinsight"
+      default: "flowinsight-es"
     - variable: "kopf_port"
       label: "Public Port"
       description: "Unique public port for kopf"
@@ -45,7 +45,7 @@ elasticsearch-datanodes-0:
         processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
-        node.box_type: hot
+        node.attr.box_type: hot
 # Short term data nodes on SSD storage
 elasticsearch-datanodes-1:
   metadata:
@@ -65,7 +65,7 @@ elasticsearch-datanodes-1:
         processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
-        node.box_type: hot
+        node.attr.box_type: hot
 # Long term (lt0) data nodes on HD storage
 elasticsearch-datanodes-lt0:
   metadata:
@@ -85,7 +85,7 @@ elasticsearch-datanodes-lt0:
         processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
-        node.box_type: warm
+        node.attr.box_type: warm
 # Long term (lt1) data nodes on HD storage
 elasticsearch-datanodes-lt1:
   metadata:
@@ -105,7 +105,7 @@ elasticsearch-datanodes-lt1:
         processors: 10
         cluster.routing.allocation.same_shard.host: "true"
         script.engine.groovy.inline.aggs: on
-        node.box_type: warm
+        node.attr.box_type: warm
 elasticsearch-query-clients:
   metadata:
     elasticsearch:
