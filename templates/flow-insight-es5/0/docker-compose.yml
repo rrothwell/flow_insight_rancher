@@ -365,6 +365,8 @@ kopf:
   environment:
     KOPF_SERVER_NAME: 'es.dev'
     KOPF_ES_SERVERS: 'es-clients:9200'
+    # KOPF_BASIC_AUTH_LOGIN: flowinsight
+    # KOPF_BASIC_AUTH_PASSWORD: ****
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.scheduler.affinity:host_label: es_kopf=true
