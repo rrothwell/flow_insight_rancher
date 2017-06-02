@@ -16,6 +16,7 @@ elasticsearch-datavolume-masters:
   volumes:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
     - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
@@ -63,6 +64,7 @@ elasticsearch-datavolume-datanode-0:
     - /disks/ssde/elasticsearch_data:/data0
     #- /disks/ssdf/elasticsearch_data:/data1
     - /elasticsearch/config0:/usr/share/elasticsearch/config
+    - /elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
     - /elasticsearch/config0/scripts:/usr/share/elasticsearch/config/scripts
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
@@ -112,6 +114,7 @@ elasticsearch-datavolume-datanode-1:
     #- /disks/ssde/elasticsearch_data:/data0
     - /disks/ssdf/elasticsearch_data:/data0
     - /elasticsearch/config1:/usr/share/elasticsearch/config
+    - /elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
     - /elasticsearch/config1/scripts:/usr/share/elasticsearch/config/scripts
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
@@ -163,6 +166,7 @@ elasticsearch-datavolume-datanode-lt0:
     #- /disks/sdb10/elasticsearch_data:/data2
     #- /disks/sda10/elasticsearch_data:/data3
     - /elasticsearch/config_lt0:/usr/share/elasticsearch/config
+    - /elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
     - /elasticsearch/config_lt0/scripts:/usr/share/elasticsearch/config/scripts
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
@@ -215,6 +219,7 @@ elasticsearch-datavolume-datanode-lt1:
     - /disks/sdb10/elasticsearch_data:/data0
     - /disks/sda10/elasticsearch_data:/data1
     - /elasticsearch/config_lt1:/usr/share/elasticsearch/config
+    - /elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
     - /elasticsearch/config_lt1/scripts:/usr/share/elasticsearch/config/scripts
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
@@ -264,6 +269,7 @@ elasticsearch-datavolume-query-clients:
   volumes:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
     - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
@@ -310,6 +316,7 @@ elasticsearch-datavolume-index-clients:
   volumes:
     - /usr/share/elasticsearch/data
     - /elasticsearch/config:/usr/share/elasticsearch/config
+    - /elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
     - /elasticsearch/config/scripts:/usr/share/elasticsearch/config/scripts
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin

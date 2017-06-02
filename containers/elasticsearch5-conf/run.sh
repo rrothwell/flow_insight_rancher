@@ -17,4 +17,13 @@ fi
 # Report which user we are.
 echo -n "User running this script: " ; whoami
 
+echo "Elasticsearch directory:"
+ls -al /usr/share/elasticsearch
+
+echo "Config directory:"
+ls -al /usr/share/elasticsearch/config
+
+echo "Scripts directory:"
+ls -al /usr/share/elasticsearch/config
+
 exec /usr/share/elasticsearch/bin/es-docker
