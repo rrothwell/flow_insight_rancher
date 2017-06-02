@@ -17,7 +17,9 @@ fi
 # Report which user we are.
 users
 
-while 1 ; do
+while true ; do
+    users
+    echo "Waiting 1 second. "
     sleep 1
 done
 
