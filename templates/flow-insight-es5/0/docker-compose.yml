@@ -100,6 +100,7 @@ elasticsearch-base-datanode-0:
   volumes_from:
     - elasticsearch-datavolume-datanode-0
   net: "container:elasticsearch-datanodes-0"
+  environment:
     ES_JAVA_OPTS: >
         -Xms16g -Xmx16g
         -XX:+UseConcMarkSweepGC 
