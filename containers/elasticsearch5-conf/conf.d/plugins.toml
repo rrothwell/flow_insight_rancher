@@ -1,6 +1,7 @@
 [template]
 src = "plugins.tmpl"
 dest = "/data/confd/plugins.txt"
+owner = "elasticsearch"
 keys = [
   "/elasticsearch/plugins/",
 ]
