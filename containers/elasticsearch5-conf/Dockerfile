@@ -12,7 +12,9 @@ VOLUME /data/confd
 VOLUME /opt/rancher/bin
 VOLUME /usr/share/elasticsearch/config
 
-RUN groupadd -g 5000 elasticsearch && adduser -u 5000 -g 5000
+# Busybox specific stuff.
+# No home directory, no password.
+RUN addgroup -g 5000 elasticsearch && adduser -H -D -u 5000 -G elasticsearch elasticsearch
 
 ENTRYPOINT ["/dockerentry.sh"]
 CMD ["--backend", "rancher", "--prefix", "/2015-07-25"]
