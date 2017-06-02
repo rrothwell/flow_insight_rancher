@@ -15,10 +15,10 @@ if [ -f "$PLUGIN_TXT" ]; then
 fi
 
 # Report which user we are.
-users
+who
 
 while true ; do
-    users
+    whoami
     echo "Waiting 1 second. "
     sleep 1
 done
