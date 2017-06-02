@@ -30,11 +30,14 @@ echo "Listing of /usr/share/elasticsearch/config/scripts:"
 ls -al /usr/share/elasticsearch/config/scripts
 
 
-# Wait for /usr/share/elasticsearch/config/ to appear so we have a destination for the elasticsearch.yml file copy.
+# Wait for /usr/share/elasticsearch/config/ to appear so we have a destination for the elasticsearch.yml file copy
+# and the jvm.options move.
 while [ ! -d "/usr/share/elasticsearch/config/" ]; do
     echo "Waiting for /usr/share/elasticsearch/config/"
     sleep 1
 done
 echo "Found /usr/share/elasticsearch/config/"
+
+mv /jvm.options /usr/share/elasticsearch/config/jvm.options
 
 exec /confd $@

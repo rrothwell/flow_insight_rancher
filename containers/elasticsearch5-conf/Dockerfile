@@ -7,12 +7,12 @@ ADD ./conf.d /etc/confd/conf.d
 ADD ./templates /etc/confd/templates
 ADD ./run.sh /run.sh
 ADD ./dockerentry.sh /dockerentry.sh
+ADD ./jvm.options /jvm.options
 
 VOLUME /data/confd
 VOLUME /opt/rancher/bin
 VOLUME /usr/share/elasticsearch/config
 
-ADD ./jvm.options /usr/share/elasticsearch/config/jvm.options
 
 # Busybox specific stuff.
 # No home directory, no password.
