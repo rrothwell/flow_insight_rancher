@@ -33,6 +33,12 @@
       type: "int"
       default: 120
       required: false
+    - variable: "xpack.security.enabled"
+      label: "X-Pack Security"
+      description: "Enforces authentication and authorisation. "
+      type: "boolean"
+      default: false
+      required: false
 
 nginx-proxy:
   metadata:
