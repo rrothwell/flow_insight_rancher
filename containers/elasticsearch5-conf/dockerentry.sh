@@ -38,6 +38,6 @@ while [ ! -d "/usr/share/elasticsearch/config/" ]; do
 done
 echo "Found /usr/share/elasticsearch/config/"
 
-mv /jvm.options /usr/share/elasticsearch/config/jvm.options
+cp -f  /jvm.options /usr/share/elasticsearch/config/jvm.options
 
 exec /confd $@
