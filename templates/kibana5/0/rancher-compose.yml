@@ -33,7 +33,7 @@
       type: "int"
       default: 120
       required: false
-    - variable: "xpack.security.enabled"
+    - variable: "xpack_security_enabled"
       label: "X-Pack Security"
       description: "Enforces authentication and authorisation. "
       type: "boolean"
@@ -47,7 +47,8 @@ nginx-proxy:
         servername: "kibana"
         upstream_port: 5601
         proxy_read_timeout: ${proxy_read_timeout}
-    kibana4:
+    kibana5:
       conf:
-        elasticsearch_url: "${elasticsearch_url}"
-        request_timeout: ${request_timeout}
+        elasticsearch.url: "${elasticsearch_url}"
+        elasticsearch.requestTimeout: ${request_timeout}
+        xpack.security.enabled: "${xpack_security_enabled}"
