@@ -1,8 +1,6 @@
 FROM busybox
 MAINTAINER richard.rothwell@aarnet.edu.au
 
-EXPOSE 5601
-
 # Set up confd to build config files from the provided templates 
 # merged with values queried from the Rancher metadata store.
 ADD https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-0.11.0-linux-amd64 /confd

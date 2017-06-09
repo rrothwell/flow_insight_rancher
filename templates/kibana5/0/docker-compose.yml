@@ -30,7 +30,7 @@ nginx-proxy:
     - ${elasticsearch_source}:elasticsearch
 
 flowinsight-kibana5:
-  image: registry.aarnet.net.au/insight/kibana5-conf:1.0.2
+  image: registry.aarnet.net.au/insight/kibana5-conf:1.0.3
   labels:
     io.rancher.container.hostname_override: container_name
   volumes_from:
@@ -44,7 +44,7 @@ flowinsight-kibana5-datavolume:
     io.rancher.container.start_once: true
   volumes:
     - "/usr/local/bin"
-    - "/opt/kibana/config"
+    - "/usr/share/kibana/config"
   entrypoint: /bin/true    
     
 flowinsight-kibana5-base:
@@ -62,5 +62,3 @@ flowinsight-kibana5-base:
     - /usr/local/bin/run.sh
   volumes_from:
     - flowinsight-kibana5-datavolume
-  ports:
-    - 5601:5601
