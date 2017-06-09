@@ -28,3 +28,6 @@ RUN addgroup -g 5001 kibana && adduser -H -D -u 5001 -G kibana kibana
 # Build the config files on container startup.
 ENTRYPOINT ["/dockerentry.sh"]
 CMD ["--backend", "rancher", "--prefix", "/2015-07-25"]
+
+EXPOSE 5601
+

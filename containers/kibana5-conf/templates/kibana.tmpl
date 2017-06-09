@@ -1,7 +1,7 @@
 # See: https://www.elastic.co/guide/en/kibana/current/_configuring_kibana_on_docker.html
 
 # Kibana is served by a back end server. This setting specifies the port to use.
-#server.port: 5601
+server.port: 5601
 
 # Specifies the address to which the Kibana server will bind. IP addresses and host names are both valid values.
 # The default is 'localhost', which usually means remote machines will not be able to connect.
@@ -93,7 +93,7 @@ elasticsearch.requestTimeout: 30000
 #pid.file: /var/run/kibana.pid
 
 # Enables you specify a file where Kibana stores log output.
-#logging.dest: stdout
+logging.dest: stdout
 
 # Set the value of this setting to true to suppress all logging output.
 #logging.silent: false
