@@ -62,3 +62,5 @@ flowinsight-kibana5-base:
     - /usr/local/bin/run.sh
   volumes_from:
     - flowinsight-kibana5-datavolume
+  ports:
+    - 5601:5601
