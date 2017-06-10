@@ -51,7 +51,7 @@ flowinsight-kibana5-base:
   restart: always
   tty: true
   stdin_open: true
-  image: docker.elastic.co/kibana/kibana:5.4.0
+  image: docker.elastic.co/kibana/kibana:5.4.1
   net: "container:nginx-proxy"
   environment:
     ELASTICSEARCH_URL: "${elasticsearch_url}"
