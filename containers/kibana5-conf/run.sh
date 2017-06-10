@@ -15,7 +15,8 @@ done
 # Backup the existing config file and put in its place the new config file.
 # We keep a copy of kibana.yml.new as it also acts as a ready flag.
 # If its not there a restart enters an infinite loop.
-mv /usr/share/kibana/config/kibana.yml /usr/share/kibana/config/kibana.yml.bak
+DATE=`date +%Y-%m-%d:%H:%M:%S`
+mv /usr/share/kibana/config/kibana.yml "/usr/share/kibana/config/kibana.yml.$DATE.bak"
 cp /usr/share/kibana/config/kibana.yml.new /usr/share/kibana/config/kibana.yml
 
 echo "Config directory:"

@@ -30,7 +30,7 @@ nginx-proxy:
     - ${elasticsearch_source}:elasticsearch
 
 flowinsight-kibana5:
-  image: registry.aarnet.net.au/insight/kibana5-conf:1.0.4
+  image: registry.aarnet.net.au/insight/kibana5-conf:1.0.5
   labels:
     io.rancher.container.hostname_override: container_name
   volumes_from:
