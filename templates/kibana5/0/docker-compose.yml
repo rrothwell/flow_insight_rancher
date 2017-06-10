@@ -37,7 +37,7 @@ flowinsight-kibana5:
      - flowinsight-kibana5-datavolume
 
 flowinsight-kibana5-datavolume:
-  image: docker.elastic.co/kibana/kibana:5.4.0
+  image: docker.elastic.co/kibana/kibana:5.4.1
   labels:
     flowinsight.kibana5.config.version: '0'
     io.rancher.container.hostname_override: container_name
