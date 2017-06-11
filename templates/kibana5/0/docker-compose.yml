@@ -10,13 +10,7 @@ kibana-vip:
   labels:
     io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.scheduler.affinity:host_label: es_kibana=true
-  
-nginx-proxy-conf:
-  image: registry.aarnet.net.au/insight/nginx-conf
-  command: "-backend=rancher --prefix=/2015-07-25"
-  labels:
-    io.rancher.container.hostname_override: container_name
-    
+      
 nginx-proxy:
   image: rancher/nginx:v1.9.4-3
   volumes_from:
@@ -28,6 +22,12 @@ nginx-proxy:
     io.rancher.scheduler.affinity:host_label: es_kibana=true
   external_links:
     - ${elasticsearch_source}:elasticsearch
+
+nginx-proxy-conf:
+  image: registry.aarnet.net.au/insight/nginx-conf
+  command: "-backend=rancher --prefix=/2015-07-25"
+  labels:
+    io.rancher.container.hostname_override: container_name
 
 flowinsight-kibana5:
   image: registry.aarnet.net.au/insight/kibana5-conf:1.0.5
