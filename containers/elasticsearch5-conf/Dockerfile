@@ -1,4 +1,5 @@
 FROM busybox
+MAINTAINER richard.rothwell@aarnet.edu.au
 
 ADD https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-0.11.0-linux-amd64 /confd
 RUN chmod +x /confd
