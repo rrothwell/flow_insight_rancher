@@ -14,7 +14,7 @@ flowinsight-farm:
 #    environment:
 #     KEY: VALUE       
 flowinsight-farm-datavolume:
-    image: registry.aarnet.net.au/insight/farm:v0.1.17
+    image: registry.aarnet.net.au/insight/farm:v0.1.18
     labels:
         flowinsight.farm.config.version: '0'
         io.rancher.container.hostname_override: container_name
@@ -26,7 +26,7 @@ flowinsight-farm-datavolume:
         - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
     entrypoint: /bin/true    
 flowinsight-farm-base:
-    image: registry.aarnet.net.au/insight/farm:v0.1.17
+    image: registry.aarnet.net.au/insight/farm:v0.1.18
     labels:
         flowinsight.farm.config.version: '0'
         io.rancher.container.hostname_override: container_name
