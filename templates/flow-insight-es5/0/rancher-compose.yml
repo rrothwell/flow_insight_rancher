@@ -149,7 +149,7 @@ elasticsearch-index-clients:
         node.name: "$${HOSTNAME}"
         node.data: "false"
         node.master: "false"
-        node.ingest: "false"
+        node.ingest: "true"
         network.host: "_site_"
         script.engine.groovy.inline.aggs: "true"
         thread_pool.search.queue_size: "${threadpool_search_queue_size}"
