@@ -25,7 +25,7 @@
       label: "Request timeout/ms"
       description: "The time limit in milliseconds for returning a response sent to ElasticSearch with every query. "
       type: "int"
-      default: 120000
+      default: 1200000
       required: false
     - variable: "proxy_read_timeout"
       label: "Proxy read timeout/s"
@@ -57,11 +57,6 @@ scale: 1
 start_on_create: true
 lb_config:
   certs: []
-  config: |-
-    defaults
-      timeout connect 5000ms
-      timeout client 200000ms
-      timeout server 200000ms
   port_rules:
   - protocol: http
     service: nginx-proxy
