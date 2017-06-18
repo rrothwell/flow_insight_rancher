@@ -53,15 +53,15 @@ nginx-proxy:
         elasticsearch.requestTimeout: ${request_timeout}
         xpack.security.enabled: "${xpack_security_enabled}"
 kibana-vip:
-scale: 1
-start_on_create: true
-lb_config:
-  certs: []
-  port_rules:
-  - protocol: http
-    service: nginx-proxy
-    source_port: 80
-    target_port: 80
+  scale: 1
+  start_on_create: true
+  lb_config:
+    certs: []
+    port_rules:
+    - protocol: http
+      service: nginx-proxy
+      source_port: 80
+      target_port: 80
 health_check:
   response_timeout: 2000
   healthy_threshold: 2
