@@ -57,14 +57,19 @@ kibana-vip:
   start_on_create: true
   lb_config:
     certs: []
+    config: |-
+      defaults
+         timeout connect 5000ms
+         timeout client 200000ms
+         timeout server 200000ms
     port_rules:
     - protocol: http
       service: nginx-proxy
       source_port: 80
       target_port: 80
-health_check:
-  response_timeout: 2000
-  healthy_threshold: 2
-  port: 42
-  unhealthy_threshold: 3
-  interval: 2000
+  health_check:
+    response_timeout: 2000
+    healthy_threshold: 2
+    port: 42
+    unhealthy_threshold: 3
+    interval: 2000
