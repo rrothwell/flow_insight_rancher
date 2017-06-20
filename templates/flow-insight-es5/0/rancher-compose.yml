@@ -25,7 +25,7 @@
       label: "Search queue size"
       description: "Defines the maximum number of pending searches. Increase if Kibana produces error messages like: 'Courier fetch N of M shards failed'."
       type: "int"
-      default: 1000
+      default: 3000
       required: false
 elasticsearch-masters:
   metadata:

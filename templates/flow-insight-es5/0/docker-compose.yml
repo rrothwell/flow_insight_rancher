@@ -289,12 +289,12 @@ elasticsearch-base-query-clients:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
   image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
-  mem_limit: 8000000000
+  mem_limit: 12000000000
   volumes_from:
     - elasticsearch-datavolume-query-clients
   net: "container:elasticsearch-query-clients"
   environment:
-    ES_JAVA_OPTS: "-Xms4g -Xmx4g"
+    ES_JAVA_OPTS: "-Xms8g -Xmx8g"
   entrypoint:
     - /opt/rancher/bin/run.sh
   ulimits:
