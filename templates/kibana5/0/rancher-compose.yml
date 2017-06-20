@@ -25,13 +25,13 @@
       label: "Request timeout/ms"
       description: "The time limit in milliseconds for returning a response sent to ElasticSearch with every query. "
       type: "int"
-      default: 1200000
+      default: 3600000
       required: false
     - variable: "proxy_read_timeout"
       label: "Proxy read timeout/s"
       description: "The time limit in seconds for Kibana returning a response to nginx. "
       type: "int"
-      default: 120
+      default: 400
       required: false
     - variable: "xpack_security_enabled"
       label: "X-Pack Security"
