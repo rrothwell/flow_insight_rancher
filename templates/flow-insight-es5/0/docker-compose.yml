@@ -20,12 +20,12 @@ elasticsearch-datavolume-masters:
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
 elasticsearch-base-master:
   labels:
     elasticsearch.master.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
   mem_limit: 4000000000
   net: "container:elasticsearch-masters"
   volumes_from:
@@ -70,12 +70,12 @@ elasticsearch-datavolume-datanode-0:
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
 elasticsearch-base-datanode-0:
   labels:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
   mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
@@ -122,12 +122,12 @@ elasticsearch-datavolume-datanode-1:
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
 elasticsearch-base-datanode-1:
   labels:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
   mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
@@ -176,12 +176,12 @@ elasticsearch-datavolume-datanode-lt0:
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
 elasticsearch-base-datanode-lt0:
   labels:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
   mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
@@ -231,12 +231,12 @@ elasticsearch-datavolume-datanode-lt1:
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
 elasticsearch-base-datanode-lt1:
   labels:
     elasticsearch.datanode.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
   mem_limit: 64000000000
   links:
     - elasticsearch-masters:es-masters
@@ -283,12 +283,12 @@ elasticsearch-datavolume-query-clients:
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
 elasticsearch-base-query-clients:
   labels:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
   mem_limit: 12000000000
   volumes_from:
     - elasticsearch-datavolume-query-clients
@@ -332,12 +332,12 @@ elasticsearch-datavolume-index-clients:
     - /elasticsearch/config/ingest-geoip:/usr/share/elasticsearch/config/ingest-geoip
     - /opt/rancher/bin
   entrypoint: /bin/true
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
 elasticsearch-base-index-clients:
   labels:
     elasticsearch.client.config.version: '0'
     io.rancher.container.hostname_override: container_name
-  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.0
+  image: registry.aarnet.net.au/insight/elasticsearch5:5.4.1
   mem_limit: 4000000000
   volumes_from:
     - elasticsearch-datavolume-index-clients
