@@ -48,6 +48,10 @@ done
   cd $FARM_PATH/mouse
   $STARTUP_PATH/mouse.sh start  &>>/tmp/mouse.start.out &
 
+# IPFIX record ElasticSearch aggregation report and indexer
+  cd $FARM_PATH/squirrel
+  $STARTUP_PATH/squirrel.sh start  &>>/tmp/squirrel.start.out &
+
 
 # Statistics ElasticSearch indexer
   cd $FARM_PATH/Hamster
