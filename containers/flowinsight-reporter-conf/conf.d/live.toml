@@ -1,0 +1,7 @@
+[template]
+src = "live.tmpl"
+dest = "/srv/insight/farm/rooster/live.config"
+keys = [
+  "/self/service",
+  "/containers",
+]

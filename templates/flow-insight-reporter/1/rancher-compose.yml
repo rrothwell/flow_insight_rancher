@@ -3,6 +3,24 @@
   version: "2.4.3-rancher1"
   description: "IPFIX data reporting."
   questions:
+   - variable: "cron_schedule"
+     type: string
+     required: true
+     label: "Reporting schedule"
+     default: "0 17 * * *"
+     description: "Define reporting schedule using cron pattern. E.g. '0 17 * * *' is 3 hours after midnight AEST. "
+   - variable: "es_query_node_ip"
+     type: string
+     required: true
+     label: "Address of ElasticSearch query node"
+     default: "10.169.13.240:9200"
+     description: "The extract query is issued to the ElasticSearch query node at the ip_address:port. "
+   - variable: "top_talkers_depth"
+     type: "int"
+     required: true
+     label: "Top Talkers depth"
+     default: 25
+     description: "The number of Top Talkers to be returned by the extract query. "
 #    - variable: "reporting_password"
 #      type: string
 #      required: true
@@ -14,3 +32,6 @@ flowinsight-reporter:
     farm:
       yml:
         reporting_password: "${reporting_password}"
+        cron_schedule: "${cron_schedule}"
+        es_query_node_ip: "${es_query_node_ip}"
+        top_talkers_depth: "${top_talkers_depth}"
