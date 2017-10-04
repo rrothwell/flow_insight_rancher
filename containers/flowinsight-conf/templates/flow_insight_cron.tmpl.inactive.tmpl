@@ -1,0 +1,8 @@
+# Placed by confd. Do not hand edit.
+{{ if exists "/self/service/metadata/farm/yml/router_name" }}
+{{ $router_name := getv "/self/service/metadata/farm/yml/router_name" }}
+{{ if exists "/self/service/metadata/farm/yml/router_scale" }}
+{{ range split(getv "/self/service/metadata/farm/yml/router_scale") }}
+0  */6 * * * root cd /srv/insight/farm/elephant/ && /usr/local/bin/lifecycle/elephant.sh stop {{$router_name}} {{.}} && sleep 30 && /usr/local/bin/lifecycle/elephant.sh start {{$router_name}} {{.}}
+{{ end }}
+{{ end }}

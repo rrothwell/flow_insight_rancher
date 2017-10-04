@@ -1,0 +1,7 @@
+[template]
+src = "flow_insight_cron.tmpl"
+dest = "/etc/cron.d"
+keys = [
+  "/self/service",
+  "/containers",
+]

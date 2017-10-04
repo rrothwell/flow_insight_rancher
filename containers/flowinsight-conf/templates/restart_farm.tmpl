@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# Placed by confd. Do not hand edit.
+
+# FlowInsight data processing pipeline (called farm). 
+
+STARTUP_PATH=/usr/local/bin/lifecycle
+FARM_PATH=/srv/insight/farm
+
+PASSWORD_FILE="$FARM_PATH/passwords/local_password.pl"
+
+while [[ ! -e "$PASSWORD_FILE" ]] ; do
+    echo "Waiting for populated database. "
+    sleep 10
+done
+
+# Farm collectors
+
+ROUTER_NAME='vic-nbpk-pe1'
+IP_VERSION='ipv4'
+ROUTER_SCALE=1
+
+{{ if exists "/self/service/metadata/farm/yml/router_name" }}
+ROUTER_NAME='{{ getv "/self/service/metadata/farm/yml/router_name" }}'
+{{ end }}
+
+{{ if exists "/self/service/metadata/farm/yml/ip_version" }}
+IP_VERSION='{{ getv "/self/service/metadata/farm/yml/ip_version" }}'
+{{ end }}
+
+{{ if exists "/self/service/metadata/farm/yml/router_scale" }}
+ROUTER_SCALE='{{ getv "/self/service/metadata/farm/yml/router_scale" }}'
+{{ end }}
+
+# Farm processors
+
+# IPFIX record decorator and publisher
+cd $FARM_PATH/elephant
+for ELEPHANT_INDEX in `seq 1 $ROUTER_SCALE`;
+do
+    cd /srv/insight/farm/elephant/ && $STARTUP_PATH/elephant.sh stop $ROUTER_NAME $ELEPHANT_INDEX && sleep 30 && $STARTUP_PATH/elephant.sh start $ROUTER_NAME $ELEPHANT_INDEX  &>>/tmp/elephant.start.out &
+    echo "Restart Elephant instance: $ELEPHANT_INDEX"
+done     
+
+exit 0
