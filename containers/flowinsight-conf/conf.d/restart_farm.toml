@@ -1,6 +1,7 @@
 [template]
 src = "restart_farm.tmpl"
 dest = "/usr/local/bin/lifecycle/restart_farm.sh"
+mode = "0744"
 keys = [
   "/self/service",
   "/containers",
