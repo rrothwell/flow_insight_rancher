@@ -2,7 +2,7 @@
 name: FlowInsight
 description: >
   A data analytics processing pipeline for IPFIX streams.
-version: 0.0.2-rancher1
+version: 0.0.3-rancher1
 category: FlowInsight
 maintainer: Richard Rothwell <richard.rothwell@aarnet.edu.au>
 license: Apache2
