@@ -16,6 +16,7 @@ flowinsight-reporter-datavolume:
     volumes:
         #- "/srv/reporter/init_data:/srv/reporter/init_data"
         - "/usr/local/bin"
+        - "/srv/insight/farm/rooster"
         - "/usr/share/flowinsight/config"
         - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
     entrypoint: /bin/true    

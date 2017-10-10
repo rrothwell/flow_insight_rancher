@@ -15,7 +15,13 @@ while [ ! -d "/usr/local/bin" ]; do
 done
 
 cp /run.sh /usr/local/bin/
-
 echo After copying run.sh
+
+
+# Backup the original config file so confd can generate the replacement.
+# The volume sidekick needs to share /srv/insight/farm/rooster as a volume for this to work.
+mv /srv/insight/farm/rooster/live.config /srv/insight/farm/rooster/live.config.original
+echo After backing-up  live.config
+
 
 exec /confd $@
