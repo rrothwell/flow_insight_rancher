@@ -3,41 +3,41 @@
 
 %config = (
 
-	'server_alias'            => 'Rooster',
-	'explanation'             => 'Process to query ElasticSearch on a schedule and to push the extract to a relational database. ',
+    'server_alias'            => 'Rooster',
+    'explanation'             => 'Process to query ElasticSearch on a schedule and to push the extract to a relational database. ',
 
-	# Period (seconds) to check for update of reference data files (obsolete). 
-	# Daily at the moment.
-	#'update_period' => 24 * 60 * 60, 
-	'update_period' =>  60, 
-	
-	# Replace above with cron scheduling.
+    # Period (seconds) to check for update of reference data files (obsolete). 
+    # Daily at the moment.
+    #'update_period' => 24 * 60 * 60, 
+    'update_period' =>  60, 
+    
+    # Replace above with cron scheduling.
     # 3 hours past midnight AEST: 0 17 * * *
-	#'cron_schedule' => '0 17 * * *',     
+    #'cron_schedule' => '0 17 * * *',     
     # Every 5 minutes.
-	#'cron_schedule' => '*/5 * * * *' , 
+    #'cron_schedule' => '*/5 * * * *' , 
 {{ if exists "/self/service/metadata/farm/yml/cron_schedule" }}
     'cron_schedule' => '{{ getv "/self/service/metadata/farm/yml/cron_schedule" }}',
 {{else}}
     'cron_schedule' => '0 17 * * *',     
 {{ end }}
-			
+            
 {{ if exists "/self/service/metadata/farm/yml/es_query_node_ip" }}
     'es_query_node_ip' => '{{ getv "/self/service/metadata/farm/yml/es_query_node_ip" }}',
 {{else}}
     'es_query_node_ip' => '10.169.13.240:9200',
 {{ end }}
 
-	es_index_name                    => 'argus-*',
-	es_index_type                    => 'flows',
-	use_category_query    			 => 1,
-	es_request_time_out              => 120,
+    es_index_name                    => 'argus-*',
+    es_index_type                    => 'flows',
+    use_category_query               => 1,
+    es_request_time_out              => 120,
 
-# The number of top talkers to be returned by the query.	
+# The number of top talkers to be returned by the query.    
 {{ if exists "/self/service/metadata/farm/yml/top_talkers_depth" }}
     'top_talkers_depth' => '{{ getv "/self/service/metadata/farm/yml/top_talkers_depth" }}',
 {{else}}
-	'top_talkers_depth' => 25,
+    'top_talkers_depth' => 25,
 {{ end }}
 
 );
