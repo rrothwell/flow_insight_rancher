@@ -24,6 +24,8 @@ flowinsight-farm-datavolume:
         - "/usr/local/bin"
         - "/usr/share/flowinsight/config"
         - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
+    ports:
+        - "5559:5559"    
     entrypoint: /bin/true    
 flowinsight-farm-base:
     image: registry.aarnet.net.au/insight/farm:v0.1.33
