@@ -24,8 +24,6 @@ flowinsight-farm-datavolume:
         - "/usr/local/bin"
         - "/usr/share/flowinsight/config"
         - "/srv/insight/farm/passwords:/srv/insight/farm/passwords"
-    ports:
-        - "5559:5559"    
     entrypoint: /bin/true    
 flowinsight-farm-base:
     image: registry.aarnet.net.au/insight/farm:v0.1.33
@@ -39,6 +37,10 @@ flowinsight-farm-base:
      #- /bin/bash
     #command: -c "while [ ! -f /usr/local/bin/run.sh ] > /dev/null; do echo Waiting for run.sh; sleep 1; done; /usr/local/bin/run.sh" 
     volumes_from:
-     - flowinsight-farm-datavolume
+    - flowinsight-farm-datavolume
     net: "container:flowinsight-farm"
+    # TODO RR To complete this the live.conf file needs to be updated with the domain name loadbalancer
+    # and the load balancer must be a Rancher managed service.
+    external_links:
+    - ${loadbalancer_source}:loadbalancer
 

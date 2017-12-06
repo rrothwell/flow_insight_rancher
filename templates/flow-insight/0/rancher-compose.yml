@@ -62,6 +62,12 @@
           - "ipv6"
       default: "ipv4"
       required: true
+    - variable: "loadbalancer_source"
+      description: "Link to loadbalancer service."
+      label: "Load balancer source"
+      type: "service"
+      required: true
+      default: "flow-insight-inlet/load_balancer"
 flowinsight-farm:
   metadata:
     farm:
@@ -69,3 +75,4 @@ flowinsight-farm:
         router_name: "${router_name}"
         router_scale: "${router_scale}"
         ip_version: "${ip_version}"
+        load_balancer: "${loadbalancer_source}"
