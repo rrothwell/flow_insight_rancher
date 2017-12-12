@@ -32,7 +32,8 @@ IP_VERSION='{{ getv "/self/service/metadata/farm/yml/ip_version" }}'
 ROUTER_SCALE='{{ getv "/self/service/metadata/farm/yml/router_scale" }}'
 {{ end }}
 
-$STARTUP_PATH/magpie.sh start $ROUTER_NAME $IP_VERSION   &>>/tmp/magpie.start.out &
+# TODO RR Removed obsolete code
+#$STARTUP_PATH/magpie.sh start $ROUTER_NAME $IP_VERSION   &>>/tmp/magpie.start.out &
 
 # Farm processors
 
@@ -44,18 +45,20 @@ do
     echo "Elephant instance: $ELEPHANT_INDEX"
 done     
 
+# TODO RR Removed obsolete code
 # IPFIX record ElasticSearch indexer
-  cd $FARM_PATH/mouse
-  $STARTUP_PATH/mouse.sh start  &>>/tmp/mouse.start.out &
+#  cd $FARM_PATH/mouse
+#  $STARTUP_PATH/mouse.sh start  &>>/tmp/mouse.start.out &
 
 # IPFIX record ElasticSearch aggregation report and indexer
   cd $FARM_PATH/squirrel
   $STARTUP_PATH/squirrel.sh start  &>>/tmp/squirrel.start.out &
 
 
+# TODO RR Removed obsolete code
 # Statistics ElasticSearch indexer
-  cd $FARM_PATH/Hamster
-  $STARTUP_PATH/hamster.sh start  &>>/tmp/hamster.start.out &
+#  cd $FARM_PATH/Hamster
+#  $STARTUP_PATH/hamster.sh start  &>>/tmp/hamster.start.out &
   
 # Service performing identiification and categorisation of IP addresses.
   cd $FARM_PATH/rabbit
